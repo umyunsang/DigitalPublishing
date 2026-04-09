@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1200px Layout</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .page {
+      width: 1200px;
+      margin: 0 auto;
+      padding: 18px 0 24px;
+      background: #fff;
+    }
+
+    .top {
+      width: 1140px;
+      margin: 0 auto 28px;
+      overflow: hidden;
+    }
+
+    .logo {
+      float: left;
+      width: 116px;
+      height: 136px;
+      background: url("images/bts/logo.png") center / contain no-repeat;
+    }
+
+    .menu {
+      float: right;
+      width: 823px;
+      height: 136px;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      color: #111;
+      font-size: 19px;
+      line-height: 1.4;
+      text-align: right;
+      padding-right: 6px;
+    }
+
+    .hero {
+      width: 1140px;
+      aspect-ratio: 1200 / 512;
+      margin: 0 auto;
+      background: url("images/bts/main_img.png") center / cover no-repeat;
+    }
+
+    .events {
+      width: 1140px;
+      margin: 38px auto 46px;
+      padding: 0 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .event {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .event.one {
+      width: 220px;
+      height: 210px;
+      background-image: url("images/bts/event_01.png");
+    }
+
+    .event.two {
+      width: 170px;
+      height: 210px;
+      background-image: url("images/bts/event_02.png");
+    }
+
+    .event.three {
+      width: 170px;
+      height: 210px;
+      background-image: url("images/bts/event_03.png");
+    }
+
+    .footer {
+      width: 1140px;
+      height: 97px;
+      margin: 0 auto;
+      background-image: url("images/bts/footer.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="top">
+      <div class="logo"></div>
+      <div class="menu">진 (JIN) ｜ 슈가 (SUGA) ｜ 제이홉 (j-hope) ｜ RM 진민 (Jimin) ｜ 뷔 (V) ｜ 정국 (Jung Kook)</div>
+    </div>
+
+    <div class="hero"></div>
+
+    <div class="events">
+      <div class="event one"></div>
+      <div class="event two"></div>
+      <div class="event three"></div>
+    </div>
+
+    <div class="footer"></div>
+  </div>
+</body>
+</html>

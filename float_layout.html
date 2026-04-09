@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Float Layout</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+
+    .wrap {
+      width: 650px;
+      margin: 20px auto;
+    }
+
+    .box {
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      color: #111;
+    }
+
+    .top {
+      height: 115px;
+      background: #0066ff;
+      color: #fff;
+      line-height: 115px;
+    }
+
+    .sub {
+      height: 115px;
+      background: #9ec0e4;
+      color: #fff;
+      line-height: 115px;
+    }
+
+    .row {
+      height: 185px;
+      overflow: hidden;
+    }
+
+    .left-yellow {
+      float: left;
+      width: 31%;
+      height: 185px;
+      background: #ffcc00;
+      line-height: 185px;
+    }
+
+    .left-orange {
+      float: left;
+      width: 31%;
+      height: 185px;
+      background: #ff6600;
+      line-height: 185px;
+    }
+
+    .gap {
+      float: left;
+      width: 6%;
+      height: 185px;
+      background: #ffffff;
+    }
+
+    .right-green {
+      float: right;
+      width: 32%;
+      height: 185px;
+      background: #c3cf4f;
+      line-height: 185px;
+    }
+
+    .clearbox {
+      clear: both;
+      height: 70px;
+      background: #c9c9c9;
+      line-height: 70px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="box top">float: none</div>
+    <div class="box sub">float: none</div>
+
+    <div class="row">
+      <div class="box left-yellow">float: left</div>
+      <div class="box left-orange">float: left</div>
+      <div class="gap"></div>
+      <div class="box right-green">float: right</div>
+    </div>
+
+    <div class="box clearbox">clear: both</div>
+  </div>
+</body>
+</html>

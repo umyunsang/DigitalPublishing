@@ -1,0 +1,89 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #fdfdfd;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+
+.box {
+    width: 160px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #555555;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    border-width: 6px;
+    border-style: solid;
+}
+
+/* 1. 부드러운 사각형 (연분홍) */
+.box1 {
+    background-color: #ffdeeb;
+    border-color: #ffc9c9;
+    border-radius: 30px;
+}
+
+/* 2. 많이 둥근 사각형 (연보라) */
+.box2 {
+    background-color: #f3f0ff;
+    border-color: #e5dbff;
+    border-radius: 65px;
+}
+
+/* 3. 완벽한 원 (연하늘) - 160px의 절반인 80px */
+.box3 {
+    background-color: #e7f5ff;
+    border-color: #d0ebff;
+    border-radius: 80px;
+}
+
+/* 4. 대칭적 둥근 모양 (민트) */
+.box4 {
+    background-color: #e6fcf5;
+    border-color: #c3fae8;
+    border-radius: 60px 0px 60px 0px;
+}
+
+/* 5. 부채꼴 모양 (연노랑) - 160px */
+.box5 {
+    background-color: #fff9db;
+    border-color: #fff3bf;
+    border-radius: 160px 0px 0px 0px;
+}
+
+/* 6. 물방울 모양 (살구색) */
+.box6 {
+    background-color: #fff4e6;
+    border-color: #ffe8cc;
+    border-radius: 80px 80px 80px 0px;
+}
+
+/* 7. 잎사귀/눈 모양 (연두색) - 160px */
+.box7 {
+    background-color: #f4fce3;
+    border-color: #e9fac8;
+    border-radius: 0px 160px 0px 160px;
+}
+
+/* 8. 터널/아치 모양 (하늘색) */
+.box8 {
+    background-color: #e3fafc;
+    border-color: #c5f6fa;
+    border-radius: 100px 100px 0px 0px;
+}

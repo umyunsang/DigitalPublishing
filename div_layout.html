@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>div 레이아웃 구성방법 3가지 (1~4번 실습)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #fff;
+    }
+
+    h3 {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    /* =========================================
+       1. float 연습
+       ========================================= */
+    .float-section {
+      margin-bottom: 80px;
+    }
+
+    .float-wrap {
+      width: 100%;
+      border: 2px solid #333;
+      overflow: hidden;
+    }
+
+    .float-top {
+      background-color: #6fb5b5;
+      color: #333;
+      text-align: center;
+      line-height: 60px;
+      height: 60px;
+      font-size: 14px;
+    }
+
+    .float-row {
+      overflow: hidden;
+    }
+
+    .float-left1 {
+      float: left;
+      width: 35%;
+      height: 60px;
+      background-color: #d4d94e;
+      text-align: center;
+      line-height: 60px;
+      font-size: 14px;
+      color: #333;
+      border-right: 2px solid #555;
+    }
+
+    .float-left2 {
+      float: left;
+      width: 35%;
+      height: 60px;
+      background-color: #b5c94e;
+      text-align: center;
+      line-height: 60px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .float-right {
+      float: right;
+      width: 27%;
+      height: 60px;
+      background-color: #f0ead6;
+      text-align: center;
+      line-height: 60px;
+      font-size: 14px;
+      color: #333;
+      border-left: 2px solid #555;
+    }
+
+    .float-clear {
+      clear: both;
+      background-color: #777;
+      color: #333;
+      text-align: center;
+      line-height: 35px;
+      height: 35px;
+      font-size: 14px;
+    }
+
+    /* =========================================
+       2. flex & overflow: hidden
+       ========================================= */
+    .flex-hidden-section {
+      margin-bottom: 80px;
+    }
+
+    .flex-hidden-wrap {
+      display: flex;
+      border: 3px solid #1a1aaa;
+      overflow: hidden;
+      width: 440px;
+    }
+
+    .flex-hidden-wrap div {
+      width: 110px;
+      height: 40px;
+      background-color: #7ab648;
+      color: #333;
+      text-align: center;
+      line-height: 40px;
+      font-size: 14px;
+      font-weight: bold;
+      border-right: 2px solid #1a1aaa;
+    }
+
+    .flex-hidden-wrap div:last-child {
+      border-right: none;
+    }
+
+    /* =========================================
+       3. flex, flex:1
+       ========================================= */
+    .flex-one-section {
+      margin-bottom: 80px;
+    }
+
+    .flex-one-wrap {
+      display: flex;
+      border: 3px solid #cc00cc;
+      overflow: hidden;
+      width: fit-content;
+    }
+
+    .flex-one-wrap div {
+      flex: 1;
+      height: 40px;
+      background-color: #7ab648;
+      color: #333;
+      text-align: center;
+      line-height: 40px;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 0 15px;
+      border-right: 2px solid #cc00cc;
+    }
+
+    .flex-one-wrap div:last-child {
+      border-right: none;
+    }
+
+    /* =========================================
+       4. display: inline-block
+       ========================================= */
+    .inline-block-section {
+      margin-bottom: 80px;
+    }
+
+    .inline-block-wrap {
+      font-size: 0;
+    }
+
+    .inline-block-wrap div {
+      display: inline-block;
+      width: 110px;
+      height: 40px;
+      border: 1px dashed #333;
+      text-align: center;
+      line-height: 40px;
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 4. display: inline-block -->
+  <div class="inline-block-section">
+    <h3>4. display: inline-block</h3>
+    <div class="inline-block-wrap">
+      <div>학교소개</div>
+      <div>학교생활</div>
+      <div>전공공부</div>
+      <div>취미생활</div>
+    </div>
+  </div>
+
+  <!-- 3. flex, flex:1 -->
+  <div class="flex-one-section">
+    <h3>3. flex, flex:1</h3>
+    <div class="flex-one-wrap">
+      <div>학교소개</div>
+      <div>학교생활</div>
+      <div>전공공부</div>
+      <div>취미생활</div>
+      <div>방과 후</div>
+      <div>아르바이트</div>
+    </div>
+  </div>
+
+  <!-- 2. flex & overflow: hidden -->
+  <div class="flex-hidden-section">
+    <h3>2. flex & overflow: hidden</h3>
+    <div class="flex-hidden-wrap">
+      <div>학교소개</div>
+      <div>학교생활</div>
+      <div>전공공부</div>
+      <div>취미생활</div>
+    </div>
+  </div>
+
+  <!-- 1. float 연습 -->
+  <div class="float-section">
+    <h3>1. float 연습</h3>
+    <div class="float-wrap">
+      <div class="float-top">float: none</div>
+      <div class="float-row">
+        <div class="float-left1">float: left</div>
+        <div class="float-left2">float: left</div>
+        <div class="float-right">float: right</div>
+      </div>
+      <div class="float-clear">clear: both</div>
+    </div>
+  </div>
+
+</body>
+</html>
