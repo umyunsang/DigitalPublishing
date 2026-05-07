@@ -1,0 +1,19 @@
+body {font-size: 16px; line-height: 180%; word-spacing: -0.2em;}
+
+/*parent*/
+.bbox { width: 300px; height: 300px; border: 1px solid; position: relative; margin: auto; text-align: center; line-height: 100px;}
+
+/*in-box*/
+.child1 {width: 100px; height: 100px; background-color: rgb(216, 178, 178); position: absolute; top: 0px; left: 0px;}
+.child2 {width: 100px; height: 100px; background-color: rgb(157, 199, 200); position: absolute; top: 0px; right: 0px;}
+.child3 {width: 100px; height: 100px; background-color: rgb(168, 168, 217); position: absolute; bottom: 0px; left: 0px;}
+.child4 {width: 100px; height: 100px; background-color: rgb(208, 162, 204); position: absolute; bottom: 0px; right: 0px;}
+
+/*center*/
+.center {width: 100px; height: 100px; background-color: rgb(150, 188, 159); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+
+/*out box*/
+.child11 {width: 100px; height: 100px; background-color: rgb(238, 28, 36); position: absolute; top: 0px; left: -100px;}
+.child12 {width: 100px; height: 100px; background-color: rgb(20, 192, 207); position: absolute; top: 0px; right: -100px;}
+.child13 {width: 100px; height: 100px; background-color: rgb(46, 49, 219); position: absolute; bottom: -100px; left: -100px;}
+.child14 {width: 100px; height: 100px; background-color: rgb(236, 0, 140); position: absolute; bottom: -100px; right: -100px;}

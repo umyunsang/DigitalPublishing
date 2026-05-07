@@ -1,0 +1,4 @@
+interface:
+  display_name: "Static Design Review"
+  short_description: "Review static HTML/CSS layout work"
+  default_prompt: "Use $static-design-review to review this static HTML/CSS design exercise."

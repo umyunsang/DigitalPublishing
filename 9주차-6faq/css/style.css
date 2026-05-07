@@ -1,0 +1,140 @@
+body {
+  font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+  font-size: 16px;
+  line-height: 160%;
+  background: #f4f5f8;
+  word-spacing: -0.2em;
+  margin: 0;
+  padding: 40px 0;
+}
+
+a { color: #333; text-decoration: none; }
+a:hover { color: blueviolet; }
+
+.container {
+  width: 720px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 36px 40px 44px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.head { text-align: center; margin-bottom: 28px; }
+.head h2 { color: green; margin: 0 0 8px; font-size: 24px; }
+.head p { color: #777; margin: 0; font-size: 14px; }
+
+/* FAQ List */
+.faq { list-style: none; padding: 0; margin: 0; }
+
+.faq-item {
+  border-bottom: 1px solid #e6e6ea;
+}
+.faq-item:first-child { border-top: 1px solid #e6e6ea; }
+
+.faq-q {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.faq-q:hover { background: #f9f7ff; }
+
+.faq-q .num {
+  display: inline-block;
+  width: 38px; height: 38px;
+  line-height: 38px;
+  text-align: center;
+  background: green;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.faq-q .title {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+.faq-q .arrow {
+  font-size: 22px;
+  color: green;
+  transition: transform 0.3s;
+  width: 24px; text-align: center;
+}
+.faq-item.open .faq-q .arrow { transform: rotate(45deg); }
+
+/* Toggle answer */
+.faq-a {
+  display: none;
+  padding: 4px 16px 22px 58px;
+  background: #faf9ff;
+}
+.faq-a p {
+  margin: 0 0 12px;
+  color: #555;
+  line-height: 1.7;
+}
+.faq-a .open-modal {
+  display: inline-block;
+  border: 1px dotted green;
+  border-radius: 5px;
+  padding: 4px 14px;
+  font-size: 13px;
+  color: green;
+}
+.faq-a .open-modal:hover {
+  background: green;
+  color: #fff;
+}
+
+/* Popup Layer */
+.modal {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: none;
+  z-index: 100;
+}
+.modal-content {
+  position: absolute;
+  background-color: #fff;
+  top: 50%; left: 50%;
+  width: 500px;
+  transform: translate(-50%, -50%);
+  padding: 5px 20px 30px;
+  border-radius: 8px;
+  box-shadow: 10px 10px 30px rgba(43, 47, 47, 0.3);
+}
+.modal-content h3 {
+  background-color: green;
+  color: #fff;
+  padding: 8px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 8px 0 16px;
+}
+.modal-content p {
+  line-height: 1.7em;
+  padding: 0 6px 16px;
+  color: #444;
+}
+.close-modal {
+  position: absolute;
+  bottom: 14px;
+  right: 16px;
+  border: 1px dotted green;
+  padding: 3px 12px;
+  border-radius: 5px;
+  color: green;
+  font-size: 13px;
+}
+.close-modal:hover {
+  background: green;
+  color: #fff;
+}

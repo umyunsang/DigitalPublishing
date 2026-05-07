@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>jQuery 토글 + 팝업 응용 - FAQ</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="container">
+
+  <header class="head">
+    <h2>자주 묻는 질문</h2>
+    <p>궁금한 항목을 클릭해 답변을 펼쳐보세요.</p>
+  </header>
+
+  <ul class="faq">
+
+    <li class="faq-item">
+      <a class="faq-q" href="#none">
+        <span class="num">Q1</span>
+        <span class="title">한글입숨 연습은 어떻게 시작하나요?</span>
+        <span class="arrow">+</span>
+      </a>
+      <div class="faq-a">
+        <p>한글입숨은 짧은 문장 단위로 매일 5분씩 연습하면 효과가 좋습니다. 아래 버튼을 눌러 자세한 가이드를 확인하세요.</p>
+        <a class="open-modal" data-target="m1" href="#none">자세히 보기</a>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <a class="faq-q" href="#none">
+        <span class="num">Q2</span>
+        <span class="title">브랜드 콜라보 아이템은 어디서 받나요?</span>
+        <span class="arrow">+</span>
+      </a>
+      <div class="faq-a">
+        <p>매월 첫째 주 월요일에 신규 콜라보 아이템이 풀립니다. 풀 라인업과 수령 방법은 모달에서 확인하세요.</p>
+        <a class="open-modal" data-target="m2" href="#none">자세히 보기</a>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <a class="faq-q" href="#none">
+        <span class="num">Q3</span>
+        <span class="title">나만의 스타일을 어떻게 표현하나요?</span>
+        <span class="arrow">+</span>
+      </a>
+      <div class="faq-a">
+        <p>아바타 커스터마이징은 머리 - 의상 - 액세서리 순으로 진행합니다. 단계별 팁은 모달에서 정리해 드립니다.</p>
+        <a class="open-modal" data-target="m3" href="#none">자세히 보기</a>
+      </div>
+    </li>
+
+  </ul>
+
+</div>
+
+<!-- Popup Layer 1 -->
+<div class="modal" id="m1">
+  <div class="modal-content">
+    <h3>한글입숨 연습 가이드</h3>
+    <p>방웜누설을 태여에 압심고 뮤섬차근은 자이를. 엎맜 벵새놔쇤워닫은 기기윙고, 얼달미은우추는 해은요도. 풀롸느졍 뤅녔에 읓링은, 어지 상내다 가이 게아를. 제내 다연새도 기뤕 에렌흐는 드라가 잆한을 응빈데 아아자 주색.</p>
+    <a class="close-modal" href="#none">X 닫기</a>
+  </div>
+</div>
+
+<!-- Popup Layer 2 -->
+<div class="modal" id="m2">
+  <div class="modal-content">
+    <h3>브랜드 콜라보 라인업</h3>
+    <p>근조고 턔우유의 덜이 다켁 건트부터 합앨시사안비타게 므머이에 아러의. 웅솝텔흐어 자헤끼학고, 므타조염 쥬어모폰피으 즐잣므느는데 아래타, 기았험이, 퇘씬옸쾅싼첯할솨가. 을와와와 거뵌은 이우께를 앟도가 겨파에.</p>
+    <a class="close-modal" href="#none">X 닫기</a>
+  </div>
+</div>
+
+<!-- Popup Layer 3 -->
+<div class="modal" id="m3">
+  <div class="modal-content">
+    <h3>스타일링 팁</h3>
+    <p>엔안에 안티러일게 하와보안다 거므 됭히얼가 난싀파럽으로밍다 데애다. 무캅아 입익 차김안 느잭널있왁으로 븡문핍다 달오산 탕식드다 삐나스그찌에 간룠삼더를 선으싯과 스밥니다. 엑즈와 미자마젼일게, 으드다 잉돤별더퇄달을 할서잠선, 주뎔응보다.</p>
+    <a class="close-modal" href="#none">X 닫기</a>
+  </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="script/custom.js"></script>
+
+</body>
+</html>

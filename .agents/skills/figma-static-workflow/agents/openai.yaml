@@ -1,0 +1,4 @@
+interface:
+  display_name: "Figma Static Workflow"
+  short_description: "Guide Figma-to-static-design workflows"
+  default_prompt: "Use $figma-static-workflow to connect Figma context with this static design exercise."

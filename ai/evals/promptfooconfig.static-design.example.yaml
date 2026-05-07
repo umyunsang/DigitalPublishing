@@ -1,0 +1,29 @@
+# Example only. Requires promptfoo and provider credentials.
+# Run from repo root after adapting the provider/model:
+# npx promptfoo@latest eval -c ai/evals/promptfooconfig.static-design.example.yaml
+
+description: Static design review prompt smoke test
+
+providers:
+  - id: openai:gpt-5.4-mini
+
+prompts:
+  - file://ai/prompts/02-static-review.md
+
+tests:
+  - description: Fixed-width layout should not be rewritten as responsive by default
+    vars:
+      html_summary: "A 1200px fixed-width BTS layout exercise using background images and inline CSS."
+    assert:
+      - type: contains
+        value: "fixed"
+      - type: not-contains
+        value: "React"
+      - type: not-contains
+        value: "Tailwind"
+  - description: Static design review should mention hierarchy
+    vars:
+      html_summary: "A Korean menu page with headings, food images, prices, and long repeated sections."
+    assert:
+      - type: contains
+        value: "hierarchy"

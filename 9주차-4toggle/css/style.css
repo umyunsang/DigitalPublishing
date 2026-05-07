@@ -1,0 +1,33 @@
+body {
+	margin: 10px;
+	font-size: 16px; color: gray;
+	line-height: 160%;
+}
+
+a {
+	display: inline-block;
+	color: coral;
+	font-weight: 700;
+	text-decoration: none;
+	width: 150px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	border: solid coral 1px;
+	padding: 5px;
+	margin: 0px 0px 10px 0px;
+	box-shadow: 5px 5px 0px rgba(181, 104, 63, 0.2);
+}
+
+a:hover {
+	color: darkkhaki;
+	text-decoration: none;
+}
+
+p {
+	width: 300px; height: 100px;
+	background-color: #fdfbf1;
+	padding: 10px 20px 10px 10px;
+	margin: 0px;
+	border: dashed coral 1px;
+}

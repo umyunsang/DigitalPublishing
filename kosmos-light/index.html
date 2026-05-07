@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>KOSMOS — Korean public Service Multi-agent Orchestration System (Light)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=18">
+</head>
+<body>
+
+  <!-- ============ HEADER (100% width) ============ -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">
+          <img src="images/logo.png?v=4" alt="KOSMOS logo">
+        </span>
+        <span class="logo-type">
+          <strong>KOSMOS</strong>
+          <em>Sovereign Civic AI</em>
+        </span>
+      </a>
+
+      <nav class="gnb">
+        <ul>
+          <li><a href="https://github.com/umyunsang/KOSMOS/blob/main/docs/presentation.md" target="_blank" rel="noopener">Vision</a></li>
+          <li><a href="https://github.com/umyunsang/KOSMOS/blob/main/docs/presentation.md#2-6-layer-architecture--%EC%A0%84%EC%B2%B4-%EA%B5%AC%EC%A1%B0" target="_blank" rel="noopener">Architecture</a></li>
+          <li><a href="https://huggingface.co/LGAI-EXAONE/K-EXAONE-236B-A23B" target="_blank" rel="noopener">Models</a></li>
+          <li><a href="https://github.com/umyunsang/KOSMOS/issues" target="_blank" rel="noopener">Roadmap</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ CONTENT WRAP (1400px centered) ============ -->
+  <main class="wrap">
+    <div class="content-inner">
+
+      <!-- Main Visual : 1200x300 slide, 가로 스크롤 -->
+      <section class="visual">
+        <div class="slide">
+          <div>
+            <a href="https://github.com/umyunsang/KOSMOS/blob/main/docs/presentation.md" target="_blank" rel="noopener"><img src="images/main_img_01.jpg?v=3" width="1200" height="300" alt=""></a>
+            <a href="https://github.com/umyunsang/KOSMOS/blob/main/docs/presentation.md#2-6-layer-architecture--%EC%A0%84%EC%B2%B4-%EA%B5%AC%EC%A1%B0" target="_blank" rel="noopener"><img src="images/main_img_02.jpg?v=3" width="1200" height="300" alt=""></a>
+            <a href="https://huggingface.co/LGAI-EXAONE/K-EXAONE-236B-A23B" target="_blank" rel="noopener"><img src="images/main_img_03.jpg?v=3" width="1200" height="300" alt=""></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 Cards -->
+      <section class="profiles">
+        <h3 class="cards-title">KOSMOS Agent Stack / 핵심 에이전트 소개</h3>
+
+        <ul class="cards">
+          <li class="card">
+            <div class="card-thumb"><img src="images/arch-query.png?v=3" alt="Query Engine"></div>
+            <p class="card-name">Query Engine</p>
+            <p class="card-desc">민원 상태머신을 관리하고 부처별 경로로 요청을 라우팅하는 핵심 엔진입니다. 대화 맥락을 구조화된 액션 트리로 변환합니다.</p>
+          </li>
+          <li class="card">
+            <div class="card-thumb"><img src="images/arch-tool.png?v=3" alt="Tool Factory"></div>
+            <p class="card-name">Tool Factory</p>
+            <p class="card-desc">공공 OpenAPI 명세를 읽어 타입을 갖춘 툴을 자동 생성하는 어댑터 팩토리입니다. 5,000여 공공 API를 일관된 인터페이스로 노출합니다.</p>
+          </li>
+          <li class="card">
+            <div class="card-thumb"><img src="images/arch-permission.png?v=3" alt="Permission Pipeline"></div>
+            <p class="card-name">Permission</p>
+            <p class="card-desc">인증과 개인정보 마스킹, 감사 로그를 단계별로 누락없이 처리합니다. 모든 접근은 원칙 기반 파이프라인을 통과합니다.</p>
+          </li>
+          <li class="card">
+            <div class="card-thumb"><img src="images/model-orchestrator.png?v=3" alt="Orchestrator"></div>
+            <p class="card-name">Orchestrator</p>
+            <p class="card-desc">K-EXAONE 236B 기반으로 전체 계획을 수립하고 다른 에이전트를 지휘합니다. 복잡한 민원을 하위 태스크로 분해·병합합니다.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Body text : 30px indent, 16px / 180% -->
+      <section class="body-text">
+        <p class="body-p">KOSMOS는 Korean public Service Multi-agent Orchestration System의 약자로, data.go.kr에 공개된 5,000여 개의 공공 OpenAPI를 단일 대화형 인터페이스로 통합하는 학술 R&amp;D 프로젝트입니다. 국민은 복잡한 부처 경계를 인지하지 않고, 자연어 한 줄로 교통 안전 정보 조회, 복지 수급 신청, 주소 이전, 긴급 서비스 호출 같은 크로스-부처 민원을 해결할 수 있습니다.</p>
+        <p class="body-p">시스템은 Query Engine, Tool Factory, Permission Pipeline, Agent Swarm, Context Memory, Error Recovery 여섯 계층을 공공 도메인으로 재설계했으며, 추론 엔진으로는 LG AI Research의 K-EXAONE 모델군을 채택합니다. Apache License 2.0 하에 공개되며, 어떠한 상용 기관과도 관계가 없는 독립 학술 프로젝트입니다.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============ FOOTER (100% width) ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="images/logo-white.png?v=1" alt="KOSMOS">
+        <span>KOSMOS</span>
+      </div>
+      <div class="footer-info">
+        <p class="foot-line">Korean public Service Multi-agent Orchestration System &nbsp;·&nbsp; TEL : 010-9106-1990</p>
+        <p class="copy">Copyright © 2026 KOSMOS Project. Licensed under Apache 2.0.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/umyunsang/KOSMOS" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/umyunsang/KOSMOS/tree/main/docs" target="_blank" rel="noopener">Docs</a>
+        <a href="https://github.com/umyunsang/KOSMOS/discussions" target="_blank" rel="noopener">Discussions</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+* {margin: 0; padding: 0; box-sizing: border-box;}
+
+body {
+	background-color: rgb(118, 35, 47);
+	min-height: 100vh;
+	font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+	padding: 100px 20px;
+	position: relative;
+}
+
+/* center card */
+.card {
+	width: 600px;
+	max-width: 100%;
+	background: #faf3e7;
+	margin: 0 auto;
+	padding: 40px 45px;
+	box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.brand {
+	color: #d63a2f;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	margin-bottom: 14px;
+}
+
+.title {
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 1.4;
+	color: #222;
+	margin-bottom: 20px;
+}
+
+.reporter {
+	font-size: 12px;
+	color: #888;
+	margin-bottom: 18px;
+}
+
+.body {
+	font-size: 14px;
+	line-height: 1.7;
+	color: #555;
+}
+
+/* caption under card */
+.caption {
+	text-align: center;
+	color: #f5e6c8;
+	font-weight: 700;
+	font-size: 18px;
+	margin-top: 30px;
+}
+
+/* fixed bottom-right floating button */
+.fab {
+	position: fixed;
+	right: 40px;
+	bottom: 40px;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+
+.fab-label {
+	color: #f5e6c8;
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.fab-btn {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: #f5e6c8;
+	color: #76232f;
+	font-size: 32px;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+	box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.25);
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Brief to Layout"
+  short_description: "Turn briefs into static layout specs"
+  default_prompt: "Use $design-brief-to-layout to turn this design brief into a static layout plan."

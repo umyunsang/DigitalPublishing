@@ -83,6 +83,24 @@ open index.html
 
 <br>
 
+## AI Design Ops Setup
+
+이 저장소에는 정적 디자인/레이아웃 수업에 맞춘 Codex 작업 환경이 추가되어 있습니다.
+
+| 경로 | 용도 |
+|------|------|
+| `AGENTS.md` | Codex와 호환 에이전트가 읽는 프로젝트 작업 지침 |
+| `.agents/skills/` | 수업 전용 Codex 스킬: 디자인 브리프, PNG 설계도→HTML, 정적 리뷰, Figma 워크플로 |
+| `docs/ai-design-lab/` | LLMOps 기반 정적 디자인 방법론 |
+| `docs/templates/` | 디자인 브리프, 레이아웃 설계, 리뷰, AI 세션 로그 템플릿 |
+| `docs/rubrics/` | 정적 HTML/CSS 디자인 평가 루브릭 |
+| `ai/prompts/` | 반복 사용할 프롬프트 |
+| `design-system/` | 디자인 토큰 스타터 |
+
+자세한 사용법은 [`docs/ai-design-lab/README.md`](docs/ai-design-lab/README.md)를 참고하세요.
+
+<br>
+
 ## License
 
 이 저장소는 수업 실습 목적으로 제작되었습니다.

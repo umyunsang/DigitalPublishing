@@ -1,0 +1,4 @@
+interface:
+  display_name: "PNG Layout to HTML"
+  short_description: "Convert layout PNGs into static HTML"
+  default_prompt: "Use $png-layout-to-html to analyze this layout PNG and build a static HTML/CSS page."
