@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="./styles/arrival.css" />
   <link rel="stylesheet" href="./styles/saved-scenes.css" />
   <link rel="stylesheet" href="./styles/why-wdc.css" />
+  <link rel="stylesheet" href="./styles/design-city.css" />
   <script>document.documentElement.className = "js";</script>
 </head>
 <body class="loading">
@@ -87,7 +88,30 @@
     </section>
     <section id="busan-syndrome" class="s s-busan-syndrome" data-section="busan-syndrome" data-webgl data-active="false" tabindex="-1"><h2>Busan Syndrome</h2></section>
     <section id="mood-routes"    class="s s-mood-routes"    data-section="mood-routes"    data-webgl data-active="false" tabindex="-1"><h2>Mood Routes</h2></section>
-    <section id="design-city"    class="s s-design-city"    data-section="design-city"    data-active="false" tabindex="-1"><h2>Design City</h2></section>
+    <section id="design-city" class="s s-design-city" data-section="design-city" data-active="false" tabindex="-1">
+  <div class="s-city__stage">
+    <div class="s-city__layers">
+      <svg class="s-city__layer" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs><mask id="cityMask1" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="100" height="100" fill="black"/><g id="cityBlinds1"></g></mask></defs>
+        <image href="./assets/design-city/1.webp" x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" mask="url(#cityMask1)"/>
+      </svg>
+      <svg class="s-city__layer" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs><mask id="cityMask2" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="100" height="100" fill="black"/><g id="cityBlinds2"></g></mask></defs>
+        <image href="./assets/design-city/2.webp" x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" mask="url(#cityMask2)"/>
+      </svg>
+      <svg class="s-city__layer" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs><mask id="cityMask3" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="100" height="100" fill="black"/><g id="cityBlinds3"></g></mask></defs>
+        <image href="./assets/design-city/3.webp" x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" mask="url(#cityMask3)"/>
+      </svg>
+      <div class="s-city__progress"><span></span><span></span><span></span></div>
+      <div class="s-city__texts">
+        <div class="s-city__txt"><h2>PASTEL<br>SEA</h2><p>광안리의 바다는 도시를 부드러운 색으로 기억하게 만든다.</p></div>
+        <div class="s-city__txt"><h2>MOVING<br>SEA</h2><p>이동하는 풍경 속에서 부산은 계속 다시 보인다.</p></div>
+        <div class="s-city__txt"><h2>NIGHT<br>SIGNAL</h2><p>밤의 신호들이 도시의 장면을 다시 켠다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
     <section id="archive"        class="s s-archive"        data-section="archive"        data-webgl data-active="false" tabindex="-1"><h2>Archive</h2></section>
   </main>
   <script type="module" src="./main.js"></script>

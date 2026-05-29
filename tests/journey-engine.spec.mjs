@@ -170,3 +170,9 @@ test("why-wdc: 12 keywords and a thumbnail", async ({ page }) => {
   await expect(page.locator("#why-wdc .s-why__col li")).toHaveCount(12);
   await expect(page.locator("#why-wdc .s-why__thumb img")).toHaveCount(1);
 });
+
+test("design-city: 3 svg layers and 3 texts", async ({ page }) => {
+  await page.goto(JOURNEY);
+  await expect(page.locator("#design-city .s-city__layer")).toHaveCount(3);
+  await expect(page.locator("#design-city .s-city__txt")).toHaveCount(3);
+});
