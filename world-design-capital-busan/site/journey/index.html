@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>World Design Capital Busan 2028 — Journey</title>
   <meta name="description" content="부산: 다시 보고 싶게 설계된 도시. 스크롤로 잇는 세계디자인수도 부산 2028." />
+  <!-- LCP: arrival 첫 이미지 사전 로드 — 브라우저가 JS 파싱 전에 fetch 시작 -->
+  <link rel="preload" as="image" href="./assets/arrival/home.webp" fetchpriority="high" />
   <script type="importmap">
 {
   "imports": {
@@ -36,8 +38,8 @@
   <main id="journey">
     <section id="arrival" class="s s-arrival" data-section="arrival" data-active="false" tabindex="-1">
       <div class="s-arrival__media">
-        <img class="s-arrival__img is-home" src="./assets/arrival/home.webp" alt="부산 도착 첫 장면" loading="eager" fetchpriority="high" />
-        <img class="s-arrival__img is-about" src="./assets/arrival/about.webp" alt="부산의 두 번째 장면" loading="lazy" />
+        <img class="s-arrival__img is-home" src="./assets/arrival/home.webp" alt="부산 도착 첫 장면" loading="eager" fetchpriority="high" width="1440" height="1800" />
+        <img class="s-arrival__img is-about" src="./assets/arrival/about.webp" alt="부산의 두 번째 장면" loading="lazy" width="1350" height="1800" />
       </div>
       <div class="s-arrival__copy">
         <h2 class="s-arrival__title">Arrival</h2>

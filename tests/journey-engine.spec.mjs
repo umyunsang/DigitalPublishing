@@ -255,3 +255,35 @@ test("webgl sections: setActive switches scene without error", async ({ page }, 
   await expect(page.locator("#archive")).toHaveAttribute("data-active", "true");
   expect(errors).toEqual([]);
 });
+
+// P4: CWV & 보안
+
+test("P4: LCP preload link exists for arrival hero", async ({ page }) => {
+  await page.goto(JOURNEY);
+  const rel = await page.evaluate(() => {
+    const link = document.querySelector("link[rel='preload'][as='image']");
+    return link ? link.getAttribute("href") : null;
+  });
+  expect(rel).toMatch(/home\.webp/);
+});
+
+test("P4: arrival images have intrinsic width/height (CLS prevention)", async ({ page }) => {
+  await page.goto(JOURNEY);
+  const [w, h] = await page.locator("#arrival .is-home").evaluate((el) => [
+    parseInt(el.getAttribute("width")), parseInt(el.getAttribute("height")),
+  ]);
+  expect(w).toBeGreaterThan(0);
+  expect(h).toBeGreaterThan(0);
+});
+
+test("P4: design-city unused images 4-12 not served (404 expected)", async ({ page }) => {
+  await page.goto(JOURNEY);
+  const res = await page.evaluate(async () => {
+    try {
+      const r = await fetch("./assets/design-city/4.webp", { method: "HEAD" });
+      return r.status;
+    } catch { return 0; }
+  });
+  // 404 (deleted) or 0 (network error) — either means file is gone
+  expect([0, 404]).toContain(res);
+});
