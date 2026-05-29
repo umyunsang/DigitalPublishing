@@ -276,6 +276,30 @@ test("P4: arrival images have intrinsic width/height (CLS prevention)", async ({
   expect(h).toBeGreaterThan(0);
 });
 
+// P5: Hub href 연결
+
+test("P5: hub menu links all point to journey/#<id>", async ({ page }) => {
+  await page.goto("/world-design-capital-busan/site/");
+  const hrefs = await page.locator(".menu .menu__item").evaluateAll((els) =>
+    els.map((el) => el.getAttribute("href"))
+  );
+  const expected = [
+    "./journey/#arrival",
+    "./journey/#saved-scenes",
+    "./journey/#why-wdc",
+    "./journey/#busan-syndrome",
+    "./journey/#mood-routes",
+    "./journey/#design-city",
+    "./journey/#archive",
+  ];
+  expect(hrefs).toEqual(expected);
+});
+
+test("P5: hub menu has 7 items", async ({ page }) => {
+  await page.goto("/world-design-capital-busan/site/");
+  await expect(page.locator(".menu .menu__item")).toHaveCount(7);
+});
+
 test("P4: design-city unused images 4-12 not served (404 expected)", async ({ page }) => {
   await page.goto(JOURNEY);
   const res = await page.evaluate(async () => {
