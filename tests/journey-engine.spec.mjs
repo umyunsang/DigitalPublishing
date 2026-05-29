@@ -143,3 +143,12 @@ test("scroll engine initializes and is bypassed under reduced-motion", async ({ 
   });
   expect(reduced).toBe(true);
 });
+
+test("registry activates a section when jumped", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "scroll/IO timing validated on desktop");
+  await page.goto(JOURNEY);
+  await expect(page.locator(".progress li")).toHaveCount(7);
+  await expect(page.locator("#arrival")).toHaveAttribute("data-active", "true");
+  await page.evaluate(() => window.__journeyJump && window.__journeyJump("saved-scenes"));
+  await expect(page.locator("#saved-scenes")).toHaveAttribute("data-active", "true");
+});
