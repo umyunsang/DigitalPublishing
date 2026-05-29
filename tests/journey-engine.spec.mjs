@@ -85,3 +85,59 @@ test("transitions: next/prev change current index with clamping", async ({ page 
   expect(r.a).toBe("saved-scenes");
   expect(r.b).toBe("arrival");
 });
+
+test("input emits next on wheel down (desktop)", async ({ page }) => {
+  await page.goto(JOURNEY);
+  await page.evaluate(async () => {
+    const { createInput } = await import("./engine/input.js");
+    window.__intents = [];
+    const input = createInput({ onIntent: (i) => window.__intents.push(i) });
+    input.setMode("snap");
+  });
+  await page.mouse.move(700, 400);
+  await page.mouse.wheel(0, 300);
+  await page.waitForTimeout(200);
+  const intents = await page.evaluate(() => window.__intents);
+  expect(intents).toContain("next");
+});
+
+test("single webgl renderer: one context, scene register/dispose", async ({ page }) => {
+  await page.goto(JOURNEY);
+  const r = await page.evaluate(async () => {
+    const { initWebGL } = await import("./engine/webgl.js");
+    const THREE = await import("three");
+    const gl = initWebGL(document.getElementById("gl"));
+    const scene = new THREE.Scene();
+    const cam = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+    gl.registerScene("t", scene, cam);
+    gl.setActive("t");
+    const hasCtx = !!gl.renderer;
+    gl.unregisterScene("t");
+    gl.dispose();
+    return { hasCtx };
+  });
+  expect(r.hasCtx).toBe(true);
+});
+
+test("scroll engine initializes and is bypassed under reduced-motion", async ({ page }) => {
+  await page.goto(JOURNEY);
+  const normal = await page.evaluate(async () => {
+    const { initScroll } = await import("./engine/scroll.js");
+    const api = initScroll();
+    const active = !!api.lenis;
+    api.destroy();
+    return active;
+  });
+  expect(normal).toBe(true);
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.reload();
+  const reduced = await page.evaluate(async () => {
+    const { initScroll } = await import("./engine/scroll.js");
+    const api = initScroll();
+    const lenisOff = api.lenis === null;
+    api.destroy();
+    return lenisOff;
+  });
+  expect(reduced).toBe(true);
+});
