@@ -5,22 +5,26 @@ import { initA11y } from "./engine/a11y.js";
 import { createRegistry } from "./engine/sections.js";
 import { initWebGL } from "./engine/webgl.js";
 import { isReflow, prefersReducedMotion } from "./engine/env.js";
+import { gsap } from "gsap";
 
 const webgl = initWebGL(document.getElementById("gl"));
 
 const ORDER = ["arrival","saved-scenes","why-wdc","busan-syndrome","mood-routes","design-city","archive"];
+// Sections taller than 100vh — need edge-aware snap so internal scroll works
+const TALL_SECTIONS = new Set(["saved-scenes","why-wdc","design-city"]);
 
+// ---- scroll & scrollTo --------------------------------------------------
 const scroll = initScroll();
+let suppressScrollTo = false;
 const scrollTo = (id) => {
+  if (suppressScrollTo) return;
   const el = document.getElementById(id);
   if (!el) return;
   if (scroll.lenis) scroll.lenis.scrollTo(el);
   else el.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth" });
 };
 
-// ------------------------------------------------------------
-// 섹션 레지스트리: 동적 로드 + 진입 시 활성화 (실패 시 정적 폴백)
-// ------------------------------------------------------------
+// ---- section registry ---------------------------------------------------
 const registry = createRegistry();
 const SECTION_MODULES = {
   "arrival":         () => import("./sections/arrival.js"),
@@ -34,17 +38,18 @@ const SECTION_MODULES = {
 for (const [name, loader] of Object.entries(SECTION_MODULES)) {
   registry.register(name, async () => {
     const mod = await loader();
-    // WebGL sections accept webgl as first arg; non-WebGL sections ignore it
     const fn = mod.default ?? mod.create;
     return fn(webgl);
   });
 }
 
+// ---- section activation -------------------------------------------------
 let activeName = null;
-// 활성 섹션에서 이만큼 떨어진 섹션은 dispose해 메모리/ScrollTrigger를 상한 (스펙 §8 lazy+dispose)
 const DISPOSE_DISTANCE = 2;
+
 async function activateSection(name) {
   if (activeName === name) return;
+  teardownEdgeScroll();
   if (activeName) {
     if (registry.has(activeName)) registry.deactivate(activeName);
     document.getElementById(activeName)?.setAttribute("data-active", "false");
@@ -55,7 +60,7 @@ async function activateSection(name) {
     try { await registry.activate(name); }
     catch (e) { console.warn(`section ${name} failed; static fallback`, e); }
   }
-  // 멀리 떨어진 섹션 정리(다시 가까워지면 재init)
+  // Dispose sections that are far away (re-init on demand)
   const activeIdx = ORDER.indexOf(name);
   for (const other of Object.keys(SECTION_MODULES)) {
     if (other === name) continue;
@@ -63,24 +68,95 @@ async function activateSection(name) {
       if (registry.has(other)) registry.dispose(other);
     }
   }
+  // Tall sections: switch to free mode so internal scroll works
+  if (TALL_SECTIONS.has(name) && snapMode) setupEdgeScroll(name);
 }
 
+// ---- edge-aware snap (tall sections) ------------------------------------
+let edgeScrollAbort = null;
+
+function teardownEdgeScroll() {
+  edgeScrollAbort?.abort();
+  edgeScrollAbort = null;
+  // Restore snap mode when leaving a tall section (snapMode checked at runtime)
+  if (snapMode) input.setMode("snap");
+}
+
+function setupEdgeScroll(id) {
+  input.setMode("free");  // allow native scroll within the tall section
+  const el = document.getElementById(id);
+  if (!el) return;
+  const ac = new AbortController();
+  edgeScrollAbort = ac;
+  let prevY = window.scrollY;
+  window.addEventListener("scroll", () => {
+    const y = window.scrollY;
+    const d = y - prevY;
+    prevY = y;
+    if (Math.abs(d) < 2) return;
+    const sTop = el.offsetTop;
+    const sBottom = sTop + el.offsetHeight - window.innerHeight;
+    if (d > 0 && y >= sBottom - 20) {
+      // Reached bottom edge — snap to next
+      teardownEdgeScroll();
+      input.lock();
+      snapWithCurtain("next");
+    } else if (d < 0 && y <= sTop + 20) {
+      // Reached top edge — snap to previous
+      teardownEdgeScroll();
+      input.lock();
+      snapWithCurtain("prev");
+    }
+  }, { passive: true, signal: ac.signal });
+}
+
+// ---- curtain transition -------------------------------------------------
+const curtain = document.querySelector(".s-curtain");
+
+function snapWithCurtain(intent) {
+  if (!snapMode || prefersReducedMotion() || !curtain) {
+    snap.go(intent);
+    return;
+  }
+  const nextIdx = Math.max(0, Math.min(ORDER.length - 1,
+    snap.index() + (intent === "next" ? 1 : -1)));
+  if (nextIdx === snap.index()) { input.unlock(); return; }
+  const nextId = ORDER[nextIdx];
+  const nextEl = document.getElementById(nextId);
+
+  input.lock();
+  gsap.timeline()
+    .to(curtain, { clipPath: "inset(0% 0 0 0)", duration: 0.25, ease: "power2.in" })
+    .call(() => {
+      // Instant jump behind the curtain — Lenis stays in sync
+      if (nextEl) {
+        if (scroll.lenis) scroll.lenis.scrollTo(nextEl, { immediate: true });
+        else window.scrollTo({ top: nextEl.offsetTop, behavior: "instant" });
+      }
+      suppressScrollTo = true;
+      snap.jump(nextId);    // onChange fires; scrollTo suppressed
+      suppressScrollTo = false;
+    })
+    .to(curtain, { clipPath: "inset(0 0 100% 0)", duration: 0.35, ease: "power2.out", delay: 0.05 })
+    .call(() => { input.unlock(); });
+}
+
+// ---- navigation ---------------------------------------------------------
 let a11y;
 const snap = createSnap({
   order: ORDER, scrollTo,
-  onChange: (id) => { a11y.setCurrent(id); activateSection(id); },
+  onChange: (id) => { a11y?.setCurrent(id); activateSection(id); },
 });
 a11y = initA11y({ order: ORDER, onGo: (i) => snap.go(i), onJump: (id) => snap.jump(id) });
 
 const snapMode = !isReflow() && !prefersReducedMotion();
 window.__journeyMode = snapMode ? "snap" : "free";
 
-const input = createInput({ onIntent: (i) => snap.go(i) });
+const input = createInput({ onIntent: (i) => snapWithCurtain(i) });
 input.setMode(window.__journeyMode);
 
-// 뷰포트 중앙선(0높이 밴드)에 걸친 섹션을 활성화.
-// rootMargin으로 루트를 중앙 한 줄로 좁혀, 섹션 높이(100~360vh)와 무관하게 동작한다.
-// (고정 intersectionRatio 방식은 뷰포트보다 2배 이상 긴 섹션에서 영영 임계에 도달하지 못함)
+// IntersectionObserver: 뷰포트 중앙선 기준 섹션 활성화
+// rootMargin으로 관찰 대역을 중앙 1px로 좁혀 높이와 무관하게 동작
 const io = new IntersectionObserver((entries) => {
   for (const entry of entries) {
     if (entry.isIntersecting) activateSection(entry.target.id);
@@ -91,8 +167,15 @@ for (const id of ORDER) {
   if (el) io.observe(el);
 }
 
-// 키보드/스냅 점프 시에도 활성화·진행표시 동기화
-window.__journeyJump = (id) => { snap.jump(id); activateSection(id); };
+// 테스트/키보드 직접 점프: instant 스크롤로 IO 중간 발화 방지
+window.__journeyJump = (id) => {
+  const el = document.getElementById(id);
+  if (el && scroll.lenis) scroll.lenis.scrollTo(el, { immediate: true });
+  else if (el) window.scrollTo({ top: el.offsetTop, behavior: "instant" });
+  suppressScrollTo = true;
+  snap.jump(id);
+  suppressScrollTo = false;
+};
 
 activateSection("arrival");
 document.body.classList.remove("loading");

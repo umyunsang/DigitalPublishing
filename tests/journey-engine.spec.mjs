@@ -225,6 +225,22 @@ test("archive: section exists and activates", async ({ page }, testInfo) => {
   await expect(page.locator("#archive h2")).toContainText("Archive");
 });
 
+test("curtain element present and initially hidden above viewport", async ({ page }) => {
+  await page.goto(JOURNEY);
+  await expect(page.locator(".s-curtain")).toHaveCount(1);
+  const cp = await page.locator(".s-curtain").evaluate((el) =>
+    getComputedStyle(el).getPropertyValue("clip-path").trim());
+  // starts hidden: inset(100% ...) — top edge collapses element
+  expect(cp).toMatch(/inset\(100%/);
+});
+
+test("snapMode is free on narrow viewport (reflow)", async ({ page }) => {
+  await page.setViewportSize({ width: 400, height: 800 });
+  await page.goto(JOURNEY);
+  const mode = await page.evaluate(() => window.__journeyMode ?? "free");
+  expect(mode).toBe("free");
+});
+
 test("webgl sections: setActive switches scene without error", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-chromium", "WebGL GPU unreliable on mobile headless");
   const errors = [];

@@ -1,0 +1,10 @@
+/* 섹션 전환 커튼 — clip-path 와이프. 시작 시 뷰포트 위에 숨겨진 상태. */
+.s-curtain {
+  position: fixed; inset: 0;
+  z-index: var(--layer-curtain);
+  background: var(--c-night);
+  pointer-events: none;
+  clip-path: inset(100% 0 0 0);
+  will-change: clip-path;
+}
+@media (prefers-reduced-motion: reduce) { .s-curtain { display: none; } }
