@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>World Design Capital Busan 2028 — Journey</title>
   <meta name="description" content="부산: 다시 보고 싶게 설계된 도시. 스크롤로 잇는 세계디자인수도 부산 2028." />
+  <script type="importmap">
+{
+  "imports": {
+    "gsap": "./vendor/gsap/index.js",
+    "gsap/ScrollTrigger": "./vendor/gsap/ScrollTrigger.js",
+    "gsap/Observer": "./vendor/gsap/Observer.js",
+    "lenis": "./vendor/lenis/lenis.mjs",
+    "three": "./vendor/three/three.module.js"
+  }
+}
+</script>
   <link rel="stylesheet" href="./styles/tokens.css" />
   <link rel="stylesheet" href="./styles/base.css" />
   <script>document.documentElement.className = "js";</script>
@@ -22,5 +33,6 @@
     <section id="design-city"    class="s s-design-city"    data-section="design-city"    tabindex="-1"><h2>Design City</h2></section>
     <section id="archive"        class="s s-archive"        data-section="archive"        data-webgl tabindex="-1"><h2>Archive</h2></section>
   </main>
+  <script type="module" src="./main.js"></script>
 </body>
 </html>
