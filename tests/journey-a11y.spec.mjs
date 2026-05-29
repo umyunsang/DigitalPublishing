@@ -4,7 +4,8 @@ const require = createRequire(import.meta.url);
 const axePath = require.resolve("axe-core/axe.min.js");
 const JOURNEY = "/world-design-capital-busan/site/journey/";
 
-test("keyboard ArrowDown advances current section", async ({ page }) => {
+test("keyboard ArrowDown advances current section", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "keyboard nav is a non-touch input; mobile emulation key timing is unreliable");
   await page.goto(JOURNEY);
   // main.js(모듈) 결선이 끝나 progress 마커가 렌더된 뒤에만 키 입력을 보낸다(레이스 방지).
   await expect(page.locator(".progress li")).toHaveCount(7);

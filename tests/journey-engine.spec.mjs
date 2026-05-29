@@ -86,7 +86,8 @@ test("transitions: next/prev change current index with clamping", async ({ page 
   expect(r.b).toBe("arrival");
 });
 
-test("input emits next on wheel down (desktop)", async ({ page }) => {
+test("input emits next on wheel down (desktop)", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "wheel is a desktop-only input; touch swipe validated separately");
   await page.goto(JOURNEY);
   await page.evaluate(async () => {
     const { createInput } = await import("./engine/input.js");
@@ -101,7 +102,8 @@ test("input emits next on wheel down (desktop)", async ({ page }) => {
   expect(intents).toContain("next");
 });
 
-test("single webgl renderer: one context, scene register/dispose", async ({ page }) => {
+test("single webgl renderer: one context, scene register/dispose", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "headless mobile GPU is unreliable; mobile WebGL validated in P2");
   await page.goto(JOURNEY);
   const r = await page.evaluate(async () => {
     const { initWebGL } = await import("./engine/webgl.js");

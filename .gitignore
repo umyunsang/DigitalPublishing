@@ -1,5 +1,15 @@
 .DS_Store
 .gemini/
 .claude/
-.agents/
-.codex/
+.agents/*
+!.agents/skills/
+!.agents/skills/**
+.codex/*
+!.codex/config.toml.example
+!.codex/hooks.json
+!.codex/hooks/
+!.codex/hooks/**
+node_modules/
+playwright-report/
+test-results/
+ai/runs/browser-captures/
