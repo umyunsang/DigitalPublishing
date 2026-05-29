@@ -164,3 +164,9 @@ test("saved-scenes: hero and 12 gallery items", async ({ page }) => {
   await expect(page.locator("#saved-scenes .s-saved__hero img")).toHaveCount(1);
   await expect(page.locator("#saved-scenes .s-saved__grid li")).toHaveCount(12);
 });
+
+test("why-wdc: 12 keywords and a thumbnail", async ({ page }) => {
+  await page.goto(JOURNEY);
+  await expect(page.locator("#why-wdc .s-why__col li")).toHaveCount(12);
+  await expect(page.locator("#why-wdc .s-why__thumb img")).toHaveCount(1);
+});
