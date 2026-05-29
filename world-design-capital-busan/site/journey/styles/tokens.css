@@ -1,1 +1,17 @@
-/* Design tokens — stub, to be filled in a later task */
+:root {
+  /* 컬러 — 부산병 무드 3축 + 중립 */
+  --c-sea: #1f6f8b; --c-coral: #ff7a59; --c-night: #06100f;
+  --c-fg: #f3f7f6; --c-fg-dim: rgba(243,247,246,.72); --c-bg: var(--c-night);
+  /* 타이포 */
+  --font-display: "Neue Montreal","Helvetica Neue",sans-serif;
+  --font-body: "Pretendard","Apple SD Gothic Neo",sans-serif;
+  --fs-display: clamp(2.5rem, 6vw, 6rem);
+  --fs-body: clamp(1rem, 1.2vw, 1.25rem);
+  /* 간격 8pt */
+  --space-1:.5rem; --space-2:1rem; --space-3:2rem; --space-4:4rem;
+  /* 레이어 */
+  --layer-gl:0; --layer-content:10; --layer-ui:20; --layer-skip:50;
+  /* 모션 */
+  --dur-fast:.4s; --dur-base:.8s; --dur-slow:1.2s;
+  --ease-enter:cubic-bezier(.16,1,.3,1); --ease-exit:cubic-bezier(.7,0,.84,0);
+}
