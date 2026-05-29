@@ -196,3 +196,46 @@ test("design-city: 3 svg layers and 3 texts", async ({ page }) => {
   await expect(page.locator("#design-city .s-city__layer")).toHaveCount(3);
   await expect(page.locator("#design-city .s-city__txt")).toHaveCount(3);
 });
+
+// P2: WebGL sections
+
+test("busan-syndrome: section exists and activates", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "WebGL section activation validated on desktop");
+  await page.goto(JOURNEY);
+  await expect(page.locator("#busan-syndrome")).toHaveCount(1);
+  await page.evaluate(() => window.__journeyJump("busan-syndrome"));
+  await expect(page.locator("#busan-syndrome")).toHaveAttribute("data-active", "true");
+  await expect(page.locator("#busan-syndrome h2")).toContainText("Busan");
+});
+
+test("mood-routes: section exists and activates", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "WebGL section activation validated on desktop");
+  await page.goto(JOURNEY);
+  await expect(page.locator("#mood-routes")).toHaveCount(1);
+  await page.evaluate(() => window.__journeyJump("mood-routes"));
+  await expect(page.locator("#mood-routes")).toHaveAttribute("data-active", "true");
+});
+
+test("archive: section exists and activates", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "WebGL section activation validated on desktop");
+  await page.goto(JOURNEY);
+  await expect(page.locator("#archive")).toHaveCount(1);
+  await page.evaluate(() => window.__journeyJump("archive"));
+  await expect(page.locator("#archive")).toHaveAttribute("data-active", "true");
+  await expect(page.locator("#archive h2")).toContainText("Archive");
+});
+
+test("webgl sections: setActive switches scene without error", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "WebGL GPU unreliable on mobile headless");
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(String(e)));
+  await page.goto(JOURNEY);
+  await expect(page.locator(".progress li")).toHaveCount(7);
+  await page.evaluate(() => window.__journeyJump("busan-syndrome"));
+  await expect(page.locator("#busan-syndrome")).toHaveAttribute("data-active", "true");
+  await page.evaluate(() => window.__journeyJump("mood-routes"));
+  await expect(page.locator("#mood-routes")).toHaveAttribute("data-active", "true");
+  await page.evaluate(() => window.__journeyJump("archive"));
+  await expect(page.locator("#archive")).toHaveAttribute("data-active", "true");
+  expect(errors).toEqual([]);
+});

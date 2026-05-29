@@ -1,0 +1,8 @@
+.s-mood-routes { position: relative; min-height: 100svh; display: grid; place-items: center; }
+.s-mood-routes h2 { position: relative; z-index: 1; mix-blend-mode: screen;
+  text-align: center; letter-spacing: -.02em; }
+.s-mood__label { position: absolute; bottom: var(--space-4); left: var(--space-3);
+  font-family: var(--font-body); font-size: var(--fs-body); color: var(--c-fg-dim); z-index: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .s-mood-routes h2 { mix-blend-mode: normal; }
+}

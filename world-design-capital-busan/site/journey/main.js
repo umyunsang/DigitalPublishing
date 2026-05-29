@@ -3,7 +3,10 @@ import { createInput } from "./engine/input.js";
 import { createSnap } from "./engine/transitions.js";
 import { initA11y } from "./engine/a11y.js";
 import { createRegistry } from "./engine/sections.js";
+import { initWebGL } from "./engine/webgl.js";
 import { isReflow, prefersReducedMotion } from "./engine/env.js";
+
+const webgl = initWebGL(document.getElementById("gl"));
 
 const ORDER = ["arrival","saved-scenes","why-wdc","busan-syndrome","mood-routes","design-city","archive"];
 
@@ -20,15 +23,20 @@ const scrollTo = (id) => {
 // ------------------------------------------------------------
 const registry = createRegistry();
 const SECTION_MODULES = {
-  "arrival": () => import("./sections/arrival.js"),
-  "saved-scenes": () => import("./sections/saved-scenes.js"),
-  "why-wdc": () => import("./sections/why-wdc.js"),
-  "design-city": () => import("./sections/design-city.js"),
+  "arrival":         () => import("./sections/arrival.js"),
+  "saved-scenes":    () => import("./sections/saved-scenes.js"),
+  "why-wdc":         () => import("./sections/why-wdc.js"),
+  "busan-syndrome":  () => import("./sections/busan-syndrome.js"),
+  "mood-routes":     () => import("./sections/mood-routes.js"),
+  "design-city":     () => import("./sections/design-city.js"),
+  "archive":         () => import("./sections/archive.js"),
 };
 for (const [name, loader] of Object.entries(SECTION_MODULES)) {
   registry.register(name, async () => {
     const mod = await loader();
-    return mod.default ? mod.default() : mod.create();
+    // WebGL sections accept webgl as first arg; non-WebGL sections ignore it
+    const fn = mod.default ?? mod.create;
+    return fn(webgl);
   });
 }
 
