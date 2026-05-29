@@ -153,6 +153,26 @@ test("registry activates a section when jumped", async ({ page }, testInfo) => {
   await expect(page.locator("#saved-scenes")).toHaveAttribute("data-active", "true");
 });
 
+test("tall sections auto-activate on real scroll (not just jump)", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "scroll/IO timing validated on desktop");
+  await page.goto(JOURNEY);
+  await expect(page.locator(".progress li")).toHaveCount(7);
+  // 360vh 섹션(saved-scenes) 중앙으로 네이티브 스크롤 → IO 중앙선 활성화 검증
+  await page.evaluate(() => {
+    const el = document.getElementById("saved-scenes");
+    const mid = el.offsetTop + el.offsetHeight / 2 - window.innerHeight / 2;
+    window.scrollTo(0, mid);
+  });
+  await expect(page.locator("#saved-scenes")).toHaveAttribute("data-active", "true");
+  // 300vh 섹션(design-city) 중앙으로도
+  await page.evaluate(() => {
+    const el = document.getElementById("design-city");
+    const mid = el.offsetTop + el.offsetHeight / 2 - window.innerHeight / 2;
+    window.scrollTo(0, mid);
+  });
+  await expect(page.locator("#design-city")).toHaveAttribute("data-active", "true");
+});
+
 test("arrival section: media and title present", async ({ page }) => {
   await page.goto(JOURNEY);
   await expect(page.locator("#arrival .s-arrival__img.is-home")).toHaveCount(1);
