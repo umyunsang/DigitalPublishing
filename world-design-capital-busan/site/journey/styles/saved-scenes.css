@@ -1,0 +1,19 @@
+.s-saved-scenes { display: block; min-height: auto; padding: 0; }
+.s-saved__hero { position: relative; height: 100svh; margin: 0; }
+.s-saved__hero img { width: 100%; height: 100%; object-fit: cover; }
+.s-saved__hero figcaption { position: absolute; left: 50%; bottom: var(--space-4);
+  transform: translateX(-50%); text-transform: uppercase; letter-spacing: .1em;
+  font-size: var(--fs-body); text-shadow: 0 1px 12px rgba(0,0,0,.5); }
+.s-saved__stage { position: relative; height: 360vh; }
+.s-saved__sticky { position: sticky; top: 0; height: 100svh; overflow: hidden;
+  display: grid; place-items: center; }
+.s-saved__title { position: absolute; font-family: var(--font-display);
+  font-size: var(--fs-display); text-align: center; z-index: 0; margin: 0; }
+.s-saved__grid { position: relative; z-index: 1; display: grid;
+  grid-template-columns: repeat(3, 1fr); gap: var(--space-3); width: min(64rem, 80vw); }
+.s-saved__grid li { aspect-ratio: 1; }
+.s-saved__grid img { width: 100%; height: 100%; object-fit: cover; }
+@media (prefers-reduced-motion: reduce) {
+  .s-saved__stage { height: auto; }
+  .s-saved__sticky { position: static; height: auto; padding: var(--space-4) 0; }
+}

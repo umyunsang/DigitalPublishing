@@ -158,3 +158,9 @@ test("arrival section: media and title present", async ({ page }) => {
   await expect(page.locator("#arrival .s-arrival__img.is-home")).toHaveCount(1);
   await expect(page.locator("#arrival .s-arrival__title")).toHaveText("Arrival");
 });
+
+test("saved-scenes: hero and 12 gallery items", async ({ page }) => {
+  await page.goto(JOURNEY);
+  await expect(page.locator("#saved-scenes .s-saved__hero img")).toHaveCount(1);
+  await expect(page.locator("#saved-scenes .s-saved__grid li")).toHaveCount(12);
+});
