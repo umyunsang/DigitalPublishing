@@ -152,3 +152,9 @@ test("registry activates a section when jumped", async ({ page }, testInfo) => {
   await page.evaluate(() => window.__journeyJump && window.__journeyJump("saved-scenes"));
   await expect(page.locator("#saved-scenes")).toHaveAttribute("data-active", "true");
 });
+
+test("arrival section: media and title present", async ({ page }) => {
+  await page.goto(JOURNEY);
+  await expect(page.locator("#arrival .s-arrival__img.is-home")).toHaveCount(1);
+  await expect(page.locator("#arrival .s-arrival__title")).toHaveText("Arrival");
+});

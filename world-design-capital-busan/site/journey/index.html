@@ -18,6 +18,7 @@
 </script>
   <link rel="stylesheet" href="./styles/tokens.css" />
   <link rel="stylesheet" href="./styles/base.css" />
+  <link rel="stylesheet" href="./styles/arrival.css" />
   <script>document.documentElement.className = "js";</script>
 </head>
 <body class="loading">
@@ -25,7 +26,16 @@
   <canvas id="gl" aria-hidden="true"></canvas>
   <nav class="progress" aria-label="섹션 진행"><ol id="progress-list"></ol></nav>
   <main id="journey">
-    <section id="arrival"        class="s s-arrival"        data-section="arrival"        data-active="false" tabindex="-1"><h2>Arrival</h2></section>
+    <section id="arrival" class="s s-arrival" data-section="arrival" data-active="false" tabindex="-1">
+      <div class="s-arrival__media">
+        <img class="s-arrival__img is-home" src="./assets/arrival/home.webp" alt="부산 도착 첫 장면" loading="eager" fetchpriority="high" />
+        <img class="s-arrival__img is-about" src="./assets/arrival/about.webp" alt="부산의 두 번째 장면" loading="lazy" />
+      </div>
+      <div class="s-arrival__copy">
+        <h2 class="s-arrival__title">Arrival</h2>
+        <p class="s-arrival__lead">도시의 첫 장면으로 들어선다.</p>
+      </div>
+    </section>
     <section id="saved-scenes"   class="s s-saved-scenes"   data-section="saved-scenes"   data-active="false" tabindex="-1"><h2>Saved Scenes</h2></section>
     <section id="why-wdc"        class="s s-why-wdc"        data-section="why-wdc"        data-active="false" tabindex="-1"><h2>Why WDC</h2></section>
     <section id="busan-syndrome" class="s s-busan-syndrome" data-section="busan-syndrome" data-webgl data-active="false" tabindex="-1"><h2>Busan Syndrome</h2></section>
