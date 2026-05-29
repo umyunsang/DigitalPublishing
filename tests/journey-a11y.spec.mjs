@@ -42,3 +42,23 @@ test("reflow: snap disabled on very narrow viewport", async ({ page }) => {
   const mode = await page.evaluate(() => window.__journeyMode || "free");
   expect(mode).toBe("free");
 });
+
+test("axe AA holds after P1 sections populated (each reachable)", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "jump+IO timing validated on desktop");
+  await page.goto(JOURNEY);
+  await expect(page.locator(".progress li")).toHaveCount(7);
+  for (const id of ["arrival", "saved-scenes", "why-wdc", "design-city"]) {
+    await page.evaluate((x) => window.__journeyJump(x), id);
+    await expect(page.locator(`#${id}`)).toHaveAttribute("data-active", "true");
+  }
+  await page.addScriptTag({ path: axePath });
+  const v = await page.evaluate(async () => {
+    const res = await window.axe.run(document, {
+      runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag22aa"] },
+    });
+    return res.violations
+      .filter((x) => x.impact === "critical" || x.impact === "serious")
+      .map((x) => x.id);
+  });
+  expect(v).toEqual([]);
+});

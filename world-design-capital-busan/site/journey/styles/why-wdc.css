@@ -6,8 +6,9 @@
   grid-template-columns: 1fr minmax(12rem, 22rem); align-items: center; gap: var(--space-3); }
 .s-why__col { display: flex; flex-direction: column; gap: var(--space-1);
   font-family: var(--font-display); font-size: clamp(2rem, 5vw, 4rem); line-height: .95; }
-.s-why__col li { opacity: .35; transition: opacity var(--dur-fast); cursor: default; list-style: none; }
-.s-why__col li.is-active { opacity: 1; color: var(--c-coral); }
+/* opacity 대신 명시적 색으로 대비 확보(WCAG AA): dim도 night 배경 대비 4.5:1 이상 */
+.s-why__col li { color: #9fb2af; transition: color var(--dur-fast); cursor: default; list-style: none; }
+.s-why__col li.is-active { color: var(--c-coral); }
 .s-why__thumb { aspect-ratio: 3/4; overflow: hidden; }
 .s-why__thumb img { width: 100%; height: 100%; object-fit: cover; }
 @media (prefers-reduced-motion: reduce) {
