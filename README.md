@@ -20,6 +20,12 @@
 
 <br>
 
+## Live Deployment
+
+- [World Design Capital Busan 2028 Prototype](https://wdc-busan.pages.dev/)
+
+<br>
+
 ## Tech Stack
 
 <p>
