@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>World Design Capital: Busan 2028</title>
+    <meta
+      name="description"
+      content="World Design Capital Busan 2028: a story about how design becomes city scenes and travel memory."
+    />
+    <meta name="author" content="World Design Capital Busan digital publishing project" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/favicon-192.png" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <meta name="theme-color" content="#020817" />
+    <link rel="stylesheet" href="https://use.typekit.net/zvb8wfk.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/menu-shell/css/base.css" />
+    <style>
+      :root {
+        --color-bg: #06100f;
+        --color-toggle-bg: #123b38;
+        --color-toggle-border: #d7fff5;
+        --color-menu-item--hover: #9ff2df;
+      }
+
+      .frame {
+        text-shadow: 0 1px 18px rgb(0 0 0 / 55%);
+      }
+
+      .frame__title {
+        max-width: 42rem;
+        line-height: 1.1;
+      }
+
+      .frame__links {
+        flex-wrap: wrap;
+      }
+
+      .title {
+        letter-spacing: 0;
+      }
+
+      .menu {
+        background: rgb(3 13 13 / 78%);
+        align-content: center;
+        gap: clamp(0.45rem, 1.2vh, 0.85rem);
+        overflow-y: auto;
+        padding: clamp(4.5rem, 10vh, 7rem) 1.5rem 2rem;
+      }
+
+      .menu__item {
+        align-items: baseline;
+        display: flex;
+        font-size: clamp(1.6rem, 4.1vw, 3.3rem);
+        gap: 0.45rem;
+        justify-content: center;
+        line-height: 0.92;
+        text-align: center;
+      }
+
+      .menu__item small {
+        display: inline-block;
+        font-size: clamp(0.75rem, 1.3vw, 1.05rem);
+        line-height: 1.1;
+        max-width: min(31vw, 22rem);
+        opacity: 0.72;
+        text-align: left;
+        white-space: normal;
+      }
+
+      .menu__item::before,
+      .menu__item::after {
+        flex: 0 0 auto;
+      }
+
+      @media (max-width: 52.99em) {
+        .frame__credits {
+          max-width: 25rem;
+        }
+      }
+    </style>
+    <script>
+      document.documentElement.className = 'js';
+    </script>
+  </head>
+
+  <body class="loading">
+    <main>
+      <header class="frame">
+        <h1 class="frame__title">
+          World Design Capital: Busan
+        </h1>
+        <nav class="frame__links" aria-label="World Design Capital Busan internal links">
+          <a href="./pages/07-archive/index.html">Sources</a>
+        </nav>
+        <p class="frame__credits">
+          디자인은 도시의 장면이 되고, 그 장면은 여행자의 기억이 된다.
+        </p>
+      </header>
+      <div class="toggle">
+        <button aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <svg viewBox="0 0 9 9" aria-hidden="true">
+            <rect x="0" y="0" width="9" height="1"></rect>
+            <rect x="0" y="4" width="9" height="1"></rect>
+            <rect x="0" y="8" width="9" height="1"></rect>
+          </svg>
+          <span>Open Routes</span>
+        </button>
+        <label>
+          <input type="checkbox" id="easeReverse" aria-label="Toggle ease reverse" checked />
+          <span>soft return</span>
+        </label>
+        <label>
+          <span>return speed: <span id="exitSpeedValue">4×</span></span>
+          <input type="range" id="exitSpeed" aria-label="Interrupt close speed" min="1" max="4" step="0.25" value="1" />
+        </label>
+      </div>
+      <div class="cover">
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/1.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/2.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/3.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/4.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/5.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/6.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/7.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/8.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/9.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/10.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/11.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/12.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/13.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/14.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/15.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/16.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/17.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/18.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/19.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/20.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/21.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/22.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/23.webp')"></div>
+        </div>
+        <div class="cover__item">
+          <div class="cover__image" style="background-image: url('./assets/menu-shell/media/24.webp')"></div>
+        </div>
+      </div>
+      <h1 class="title">
+        <span>Design</span>
+        <span>Busan</span>
+      </h1>
+      <nav class="menu" id="menu" aria-label="World Design Capital Busan story pages">
+        <video class="bg-video" muted loop playsinline>
+          <source src="./assets/menu-shell/media/bgvideo.mp4" type="video/mp4" />
+        </video>
+        <a class="menu__item" href="./pages/01-arrival/index.html">
+          ARRIVAL <small>도시의 첫 장면으로 들어가는 전환</small>
+        </a>
+        <a class="menu__item" href="./pages/02-saved-scenes/index.html">
+          SAVED SCENES <small>저장하고 다시 꺼내 보는 부산의 이미지</small>
+        </a>
+        <a class="menu__item" href="./pages/03-why-wdc/index.html">
+          WHY WDC <small>세계디자인 수도 부산을 설명하는 키워드</small>
+        </a>
+        <a class="menu__item" href="./pages/04-busan-syndrome/index.html">
+          BUSAN SYNDROME <small>여행 뒤에도 남는 도시의 잔상</small>
+        </a>
+        <a class="menu__item" href="./pages/05-mood-routes/index.html">
+          MOOD ROUTES <small>사람과 장소가 만드는 감정 루트</small>
+        </a>
+        <a class="menu__item" href="./pages/06-design-city/index.html">
+          DESIGN CITY <small>바다, 이동, 골목, 밤의 장면 전환</small>
+        </a>
+        <a class="menu__item" href="./pages/07-archive/index.html">
+          ARCHIVE <small>출처, 레퍼런스, 제작 기록</small>
+        </a>
+      </nav>
+    </main>
+    <script src="./assets/menu-shell/js/imagesloaded.pkgd.min.js"></script>
+    <script src="./assets/menu-shell/js/gsap.min.js"></script>
+    <script type="module" src="./assets/menu-shell/js/index.js"></script>
+  </body>
+</html>
