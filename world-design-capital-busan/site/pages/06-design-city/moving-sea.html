@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Designed Scenes of Busan | Moving Sea</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../../assets/favicon/favicon-192.png" />
+  <link rel="shortcut icon" href="../../assets/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-touch-icon.png" />
+  <meta name="theme-color" content="#020817" />
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header class="frame">
+    <a class="frame__back" href="../05-mood-routes/index.html">Previous</a>
+    <a class="frame__archive" href="../../index.html">Hub</a>
+    <a class="frame__github" href="../07-archive/index.html">Next</a>
+    <nav class="frame__demos">
+      <span>Scene Variations: </span>
+      <a href="index.html">Pastel Sea</a>
+      <a href="moving-sea.html" class="current">Moving Sea</a>
+      <a href="sacred-coast.html">Sacred Coast</a>
+      <a href="night-signal.html">Night Signal</a>
+    </nav>
+  </header>
+  <div class="spacer">
+    <h1>Designed Scenes of Busan<br><span>(Moving Sea)</span></h1>
+      <span class="info">Scroll through the scene</span>
+  </div>
+  <section class="stage">
+    <div class="layers">
+      <svg class="layer" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <mask id="mask1" maskUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="100" height="100" fill="black" />
+            <g id="blinds1"></g>
+          </mask>
+        </defs>
+        <g class="art-direction-layer" mask="url(#mask1)">
+          <image class="layer-bg" href="img/4.webp"
+                 x="0" y="0" width="100" height="100"
+                 preserveAspectRatio="xMidYMid slice" />
+          <image class="layer-main" href="img/4.webp"
+                 data-focus-wide="xMidYMid slice"
+                 data-focus-portrait="xMidYMid slice"
+                 x="0" y="0" width="100" height="100"
+                 preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </svg>
+      <svg class="layer" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <mask id="mask2" maskUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="100" height="100" fill="black" />
+            <g id="blinds2"></g>
+          </mask>
+        </defs>
+        <g class="art-direction-layer" mask="url(#mask2)">
+          <image class="layer-bg" href="img/5.webp"
+                 x="0" y="0" width="100" height="100"
+                 preserveAspectRatio="xMidYMid slice" />
+          <image class="layer-main" href="img/5.webp"
+                 data-focus-wide="xMidYMax slice"
+                 data-focus-portrait="xMidYMid slice"
+                 x="0" y="0" width="100" height="100"
+                 preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </svg>
+      <svg class="layer" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <mask id="mask3" maskUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="100" height="100" fill="black" />
+            <g id="blinds3"></g>
+          </mask>
+        </defs>
+        <g class="art-direction-layer" mask="url(#mask3)">
+          <image class="layer-bg" href="img/6.webp"
+                 x="0" y="0" width="100" height="100"
+                 preserveAspectRatio="xMidYMid slice" />
+          <image class="layer-main" href="img/6.webp"
+                 data-focus-wide="xMidYMax slice"
+                 data-focus-portrait="xMidYMid slice"
+                 x="0" y="0" width="100" height="100"
+                 preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </svg>
+      <div class="progress-bar">
+        <div class="segment">
+          <div class="fill"></div>
+        </div>
+        <div class="segment">
+          <div class="fill"></div>
+        </div>
+        <div class="segment">
+          <div class="fill"></div>
+        </div>
+      </div>
+      <div class="texts">
+        <div class="txt">
+          <h1>MOVING<br>
+            SEA</h1>
+          <h2>Route as design</h2>
+          <span>청사포의 열차와 스카이캡슐은 바다를 보는 방식을 이동 경험으로 바꾼다.</span>
+        </div>
+        <div class="txt">
+          <h1>SEA<br>
+            LINE</h1>
+          <h2>Coastal motion</h2>
+          <span>길은 목적지로만 이어지지 않는다. 부산에서는 이동 자체가 기억되는 풍경이 된다.</span>
+        </div>
+        <div class="txt">
+          <h1>ROUTE<br>
+            MEMORY</h1>
+          <h2>Saved movement</h2>
+          <span>움직이는 바다는 여행자의 손 안에서 짧은 영상과 사진으로 반복 재생된다.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="spacer">
+    <h1><a href="sacred-coast.html">Next: Sacred Coast</a></h1>
+  </div>
+  <script src="js/gsap.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
+  <script src="js/lenis.min.js"></script>
+  <script src="js/script2.js" defer></script>
+</body>
+
+</html>

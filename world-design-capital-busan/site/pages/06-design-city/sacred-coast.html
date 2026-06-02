@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Designed Scenes of Busan | Sacred Coast</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../../assets/favicon/favicon-192.png" />
+  <link rel="shortcut icon" href="../../assets/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-touch-icon.png" />
+  <meta name="theme-color" content="#020817" />
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header class="frame">
+    <a class="frame__back" href="../05-mood-routes/index.html">Previous</a>
+    <a class="frame__archive" href="../../index.html">Hub</a>
+    <a class="frame__github" href="../07-archive/index.html">Next</a>
+    <nav class="frame__demos">
+      <span>Scene Variations: </span>
+      <a href="index.html">Pastel Sea</a>
+      <a href="moving-sea.html">Moving Sea</a>
+      <a href="sacred-coast.html" class="current">Sacred Coast</a>
+      <a href="night-signal.html">Night Signal</a>
+    </nav>
+  </header>
+  <div class="spacer">
+    <h1>Designed Scenes of Busan<br><span>(Sacred Coast)</span></h1>
+      <span class="info">Scroll through the scene</span>
+  </div>
+  <section class="stage">
+    <div class="layers">
+      <svg class="layer" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <mask id="mask1" maskUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="100" height="100" fill="black" />
+            <g id="blinds1"></g>
+          </mask>
+        </defs>
+        <g class="art-direction-layer" mask="url(#mask1)">
+          <image class="layer-bg" href="img/7.webp"
+                 x="0" y="0" width="100" height="100"
+                 preserveAspectRatio="xMidYMid slice" />
+          <image class="layer-main" href="img/7.webp"
+                 data-focus-wide="xMidYMin slice"
+                 data-focus-portrait="xMidYMid slice"
+                 x="0" y="0" width="100" height="100"
+                 preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </svg>
+      <svg class="layer" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <mask id="mask2" maskUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="100" height="100" fill="black" />
+            <g id="blinds2"></g>
+          </mask>
+        </defs>
+        <g class="art-direction-layer" mask="url(#mask2)">
+          <image class="layer-bg" href="img/8.webp"
+                 x="0" y="0" width="100" height="100"
+                 preserveAspectRatio="xMidYMid slice" />
+          <image class="layer-main" href="img/8.webp"
+                 data-focus-wide="xMidYMid slice"
+                 data-focus-portrait="xMidYMid slice"
+                 x="0" y="0" width="100" height="100"
+                 preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </svg>
+      <svg class="layer" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <mask id="mask3" maskUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="100" height="100" fill="black" />
+            <g id="blinds3"></g>
+          </mask>
+        </defs>
+        <g class="art-direction-layer" mask="url(#mask3)">
+          <image class="layer-bg" href="img/9.webp"
+                 x="0" y="0" width="100" height="100"
+                 preserveAspectRatio="xMidYMid slice" />
+          <image class="layer-main" href="img/9.webp"
+                 data-focus-wide="xMidYMid slice"
+                 data-focus-portrait="xMidYMid slice"
+                 x="0" y="0" width="100" height="100"
+                 preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </svg>
+      <div class="progress-bar">
+        <div class="segment">
+          <div class="fill"></div>
+        </div>
+        <div class="segment">
+          <div class="fill"></div>
+        </div>
+        <div class="segment">
+          <div class="fill"></div>
+        </div>
+      </div>
+      <div class="texts">
+        <div class="txt">
+          <h1>SACRED<br>
+            COAST</h1>
+          <h2>Architecture and tide</h2>
+          <span>해동용궁사처럼 바다와 건축이 만나는 장면은 부산의 도시 디자인을 더 입체적으로 만든다.</span>
+        </div>
+        <div class="txt">
+          <h1>CLIFF<br>
+            ROUTE</h1>
+          <h2>Edge of the city</h2>
+          <span>절벽과 파도, 계단과 처마가 겹치며 부산은 단순한 해변 도시를 넘어선다.</span>
+        </div>
+        <div class="txt">
+          <h1>QUIET<br>
+            SIGNAL</h1>
+          <h2>Stay longer</h2>
+          <span>부산병은 화려함보다 오래 머무는 장면에서 강해진다. 천천히 다시 보고 싶은 도시다.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="spacer">
+    <h1><a href="night-signal.html">Next: Night Signal</a></h1>
+  </div>
+  <script src="js/gsap.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
+  <script src="js/lenis.min.js"></script>
+  <script src="js/script3.js" defer></script>
+</body>
+
+</html>
