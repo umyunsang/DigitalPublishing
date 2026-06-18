@@ -32,6 +32,13 @@ import{g as a}from"./index-C_mG4s_8.js";import{E as t}from"./Enter-_PTbZfPb.js";
             <div class="inner_lines inner_linesleft"></div>
           </div>
         </li>
+        <li>
+          <p class="anim_p">STORYBOARD</p>
+          <p class="anim_p">GPT-5.5 -> storyboard</p>
+          <div class="lines">
+            <div class="inner_lines inner_linesleft"></div>
+          </div>
+        </li>
       </ul>
       <!-- <img class="img_hero_small" alt="Busan arrival scene" src="/images/home.webp"></img> -->
       <ul>
@@ -60,6 +67,14 @@ import{g as a}from"./index-C_mG4s_8.js";import{E as t}from"./Enter-_PTbZfPb.js";
         <li>
           <p class="anim_p2">MEMORY</p>
           <p class="anim_p2">Saved, replayed, revisited</p>
+
+          <div class="lines">
+            <div class="inner_lines inner_linesright"></div>
+          </div>
+        </li>
+        <li>
+          <p class="anim_p2">THREE.JS</p>
+          <p class="anim_p2">Claude Code Opus 4.8</p>
 
           <div class="lines">
             <div class="inner_lines inner_linesright"></div>
