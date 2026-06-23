@@ -35,10 +35,10 @@ This course workspace should feel like a quiet design lab: practical, readable, 
 
 | Level | Size | Weight | Line Height | Tracking | Usage |
 |-------|------|--------|-------------|----------|-------|
-| Display | `clamp(48px, 12vw, 132px)` | 600 | 0.92 | 0 | Main invitation names |
-| H1 | `clamp(36px, 7vw, 60px)` | 600 | 1.05 | 0 | Main emotional headline |
-| H2 | `clamp(28px, 6vw, 48px)` | 600 | 1.15 | 0 | Feature headings |
-| Date/lg | `clamp(26px, 4vw, 34px)` | 500 | 1.18 | 0 | Hero date and time |
+| Display | `108px` | 600 | 0.92 | 0 | Main invitation names |
+| H1 | `60px` | 600 | 1.05 | 0 | Main emotional headline |
+| H2 | `48px` | 600 | 1.15 | 0 | Feature headings |
+| Date/lg | `34px` | 500 | 1.18 | 0 | Hero date and time |
 | H3 | `24px` | 600 | 1.3 | 0 | Card or caption title |
 | Body/lg | `18px` | 400 | 1.8 | 0 | Invitation copy |
 | Body | `16px` | 400 | 1.7 | 0 | Default text |
@@ -47,15 +47,15 @@ This course workspace should feel like a quiet design lab: practical, readable, 
 
 ### Font Stack
 
-- Primary: `Georgia, serif`
-- UI: `Georgia, serif`
-- Mono: `Georgia, serif`
+- Primary: `serif`
+- UI: `serif`
+- Mono: `serif`
 
 ### Rules
 
-- Use `Georgia, serif` across invitation names, narrative copy, controls, metadata, and links.
+- Use the generic `serif` family across invitation names, narrative copy, controls, metadata, and links so Korean text resolves through the operating system's serif font mapping.
 - Body text never drops below `14px`.
-- Do not scale type directly with viewport width except through the declared `clamp()` display tokens.
+- Do not scale type by viewport width inside the invitation; the `900px x 1440px` stage scales as a whole.
 
 ## 4. Spacing & Layout
 
@@ -80,14 +80,16 @@ All spacing derives from a base of `4px`.
 
 ### Grid
 
-- Max content width: `1180px`
-- Column system: one-column mobile editorial flow; two-column asymmetric desktop compositions.
-- Breakpoints: mobile under `750px`, desktop from `751px`, large desktop from `1480px`.
+- Virtual viewport: `900px x 1440px`
+- Stage scaling: the `900px x 1440px` composition scales as a single centered canvas across mobile, tablet, and desktop screens.
+- Max content width: `820px` inside the virtual viewport.
+- Column system: preserve the same asymmetric invitation composition at every screen size.
+- Breakpoints: none for the wedding unrolling invitation; do not reflow the composition by device width.
 
 ### Rules
 
 - Use full-bleed sections only when the WebGL image needs room to unroll.
-- Keep mobile content in a single reading column.
+- Keep the virtual viewport composition intact instead of switching to a separate mobile layout.
 - Preserve fixed-format image containers with explicit aspect ratios.
 
 ## 5. Components

@@ -1,9 +1,10 @@
-import FontFaceObserver from "fontfaceobserver";
 import imagesLoaded from "./imagesLoaded";
 import Scene from "./rolls";
 import gsap from "gsap";
 
 const scene = new Scene("container");
+const STAGE_WIDTH = 900;
+const STAGE_HEIGHT = 1440;
 
 // helper functions
 const MathUtils = {
@@ -13,14 +14,18 @@ const MathUtils = {
   lerp: (a, b, n) => (1 - n) * a + n * b
 };
 
-// body element
 const body = document.body;
-let IMAGES;
 
 // calculate the viewport size
 let winsize;
-const calcWinsize = () =>
-  (winsize = { width: window.innerWidth, height: window.innerHeight });
+let stageScale = 1;
+const calcWinsize = () => {
+  winsize = { width: window.innerWidth, height: window.innerHeight };
+  stageScale = Math.min(winsize.width / STAGE_WIDTH, winsize.height / STAGE_HEIGHT);
+  document.documentElement.style.setProperty("--stage-scale", stageScale);
+  return winsize;
+};
+let IMAGES;
 calcWinsize();
 // and recalculate on resize
 window.addEventListener("resize", calcWinsize);
@@ -231,7 +236,8 @@ class SmoothScroll {
     ) {
       this.shouldRender = true;
       this.DOM.scrollable.style.transform = `translate3d(0,${-1 *
-        this.renderedStyles.translationY.previous}px,0)`;
+        this.renderedStyles.translationY.previous /
+        stageScale}px,0)`;
       // console.log(this.items);
       for (const item of this.items) {
         // if the item is inside the viewport call it's render function
@@ -250,7 +256,10 @@ class SmoothScroll {
   setSize() {
     // set the heigh of the body in order to keep the scrollbar on the page
     // console.log(this.DOM.scrollable.scrollHeight, 'HEIGHT');
-    body.style.height = `${this.DOM.scrollable.scrollHeight}px`;
+    body.style.height = `${Math.max(
+      this.DOM.scrollable.scrollHeight * stageScale,
+      winsize.height
+    )}px`;
   }
 
   createItems() {
@@ -294,17 +303,6 @@ class SmoothScroll {
 /***********************************/
 /********** Preload stuff **********/
 
-const fontParalucent = new Promise(resolve => {
-  new FontFaceObserver("paralucent").load().then(() => {
-    resolve();
-  }).catch(resolve);
-});
-const fontStarling = new Promise(resolve => {
-  new FontFaceObserver("starling").load().then(() => {
-    resolve();
-  }).catch(resolve);
-});
-
 // Preload images
 const preloadImages = new Promise((resolve, reject) => {
   imagesLoaded(document.querySelectorAll("img"), { background: true }, resolve);
@@ -314,7 +312,7 @@ preloadImages.then(images => {
   IMAGES = images.images;
 });
 
-const preloadEverything = [fontStarling, fontParalucent, preloadImages];
+const preloadEverything = [preloadImages];
 
 // And then..
 Promise.all(preloadEverything).then(() => {
