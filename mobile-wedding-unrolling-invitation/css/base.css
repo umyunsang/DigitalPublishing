@@ -39,7 +39,7 @@ body {
 	--stage-height: 1440px;
 	color: var(--color-text);
 	background-color: var(--color-bg);
-	font-family: serif;
+	font-family: Georgia, "Noto Serif KR", serif;
 	font-size: 16px;
 	line-height: 1.7;
 	overflow-x: hidden;
@@ -150,7 +150,7 @@ a:focus-visible,
 }
 
 .title {
-	font-family: serif;
+	font-family: Georgia, "Noto Serif KR", serif;
 	font-weight: 700;
 }
 
@@ -193,7 +193,7 @@ canvas {
 }
 
 .header__title {
-	font-family: serif;
+	font-family: Georgia, "Noto Serif KR", serif;
 	font-size: 60px;
 	font-weight: 600;
 	line-height: 1.05;
@@ -307,7 +307,7 @@ canvas {
 }
 
 .meta {
-	font-family: serif;
+	font-family: Georgia, "Noto Serif KR", serif;
 	font-weight: 700;
 	line-height: 1.15;
 }
@@ -484,7 +484,7 @@ canvas {
 	color: var(--color-link);
 	cursor: pointer;
 	display: inline-flex;
-	font-family: serif;
+	font-family: Georgia, "Noto Serif KR", serif;
 	font-size: 14px;
 	justify-content: center;
 	line-height: 1.6;

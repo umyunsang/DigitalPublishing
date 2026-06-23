@@ -47,13 +47,13 @@ This course workspace should feel like a quiet design lab: practical, readable, 
 
 ### Font Stack
 
-- Primary: `serif`
-- UI: `serif`
-- Mono: `serif`
+- Primary: `Georgia, "Noto Serif KR", serif`
+- UI: `Georgia, "Noto Serif KR", serif`
+- Mono: `Georgia, "Noto Serif KR", serif`
 
 ### Rules
 
-- Use the generic `serif` family across invitation names, narrative copy, controls, metadata, and links so Korean text resolves through the operating system's serif font mapping.
+- Use `Georgia` for English, dates, and numbers; use `Noto Serif KR` for Korean glyphs through the Google Fonts stylesheet, which serves WOFF2 subsets with `unicode-range`.
 - Body text never drops below `14px`.
 - Do not scale type by viewport width inside the invitation; the `900px x 1440px` stage scales as a whole.
 
