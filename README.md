@@ -1,165 +1,116 @@
-# Mobile Wedding Unrolling Invitation Template
+# Digital Publishing
 
-Scroll-driven mobile wedding invitation template built with Three.js, WebGL, and a soft image-unrolling interaction.
+> 동아대-동서대 글로컬연합대학 Field 연합전공 | 디지털퍼블리싱 수업 및 퍼블리싱 프로젝트 저장소
 
-도움이 됐다면 GitHub에서 Star(즐겨찾기)만 눌러주세요. 그걸로 충분합니다.
+## About
 
-## Links
+이 저장소는 **동서대학교 디지털미디어학부 디지털퍼블리싱 수업**에서 진행한 정적 HTML/CSS 실습과 퍼블리싱 프로젝트를 모아 둔 작업 공간입니다.
 
-| Type | Link |
+| 항목 | 내용 |
 | --- | --- |
-| Live demo | [ourseason.pages.dev](https://ourseason.pages.dev/) |
-| GitHub repository | [github.com/umyunsang/DigitalPublishing](https://github.com/umyunsang/DigitalPublishing) |
-| Template folder | [`mobile-wedding-unrolling-invitation/`](mobile-wedding-unrolling-invitation/) |
-| Customization guide | [`docs/mobile-wedding-template/customization.md`](docs/mobile-wedding-template/customization.md) |
-| Deployment guide | [`docs/mobile-wedding-template/deployment.md`](docs/mobile-wedding-template/deployment.md) |
-| QA checklist | [`docs/mobile-wedding-template/qa-checklist.md`](docs/mobile-wedding-template/qa-checklist.md) |
+| 수강생 | 동아대학교 컴퓨터공학과 AI전공 |
+| 개설학과 | 동서대학교 디지털미디어학부 |
+| 연합전공 | 글로컬연합대학 Field 연합전공 |
+| 수업명 | 디지털퍼블리싱 |
 
-## What This Is
+## Featured Publishing Projects
 
-This repository contains a reusable mobile wedding invitation template:
+| Project | Description | Link |
+| --- | --- | --- |
+| Mobile Wedding Unrolling Invitation | Three.js/WebGL 기반 스크롤 인터랙션 모바일 청첩장 하위 프로젝트 | [`mobile-wedding-unrolling-invitation/`](mobile-wedding-unrolling-invitation/) |
+| World Design Capital Busan 2028 Prototype | 부산 WDC 2028 콘셉트 퍼블리싱 프로토타입 | [wdc-busan.pages.dev](https://wdc-busan.pages.dev/) |
 
-- scroll-linked WebGL image unroll transition
-- Korean invitation copy layout
-- mobile-first fixed stage composition
-- replaceable couple photos and wedding details
-- static hosting friendly build output
-- no React, no backend, no account system
-
-The invitation lives in:
+모바일 청첩장 템플릿을 사용하려면 아래 경로의 README를 먼저 보세요.
 
 ```text
-mobile-wedding-unrolling-invitation/
+mobile-wedding-unrolling-invitation/README.md
 ```
 
-The current public demo is deployed at:
+직접 공유 가능한 모바일 청첩장 데모 링크:
 
 ```text
 https://ourseason.pages.dev/
 ```
 
-## Quick Start
+도움이 됐다면 GitHub에서 Star(즐겨찾기)만 눌러주세요.
+
+## Class Exercises
+
+| File or folder | Description | Main practice |
+| --- | --- | --- |
+| `index.html` | 담소 한식 카페 메뉴판 | HTML 시맨틱 구조, CSS 텍스트 스타일링, 이미지 배치 |
+| `figma.html` | Figma 디자인 기반 정적 페이지 | Figma export, absolute positioning, 뉴스 레이아웃 |
+| `news.html` | 뉴스 기사 카드 레이아웃 | Flexbox, RGBA, shadow, radius |
+| `radious.html` | border-radius 연습 | 다양한 border-radius 조합 |
+| `float_layout.html` | Float 레이아웃 | float, clear |
+| `layout_1200.html` | 1200px 고정폭 레이아웃 | fixed-width page layout |
+| `div_layout.html` | div 레이아웃 구성 방식 | float, flex, inline-block |
+| `govon.html` | GovOn 프로젝트 소개 페이지 | 카드 레이아웃, 외부 CSS, 웹폰트 |
+| `9주차-*` | 9주차 UI 실습 묶음 | position, menu, toggle, popup, FAQ |
+
+## Repository Structure
+
+```text
+DigitalPublishing/
+├── README.md
+├── index.html
+├── figma.html
+├── news.html
+├── radious.html
+├── float_layout.html
+├── layout_1200.html
+├── div_layout.html
+├── govon.html
+├── css/
+├── images/
+├── 9주차-*/
+├── kosmos-light/
+├── mobile-wedding-unrolling-invitation/
+├── docs/
+├── ai/
+└── design-system/
+```
+
+## How to Run
+
+Most class exercises are plain static HTML files and can be opened directly.
 
 ```bash
-git clone https://github.com/umyunsang/DigitalPublishing.git
-cd DigitalPublishing/mobile-wedding-unrolling-invitation
+open index.html
+```
+
+The mobile wedding invitation is different because it uses Parcel, ES modules, and GLSL shader imports. Run it from its folder:
+
+```bash
+cd mobile-wedding-unrolling-invitation
 npm install
 npx parcel index.html
 ```
 
-Then open the local Parcel URL in a browser.
+## AI Design Ops Documents
 
-For a production build:
+This repository also includes AI-assisted design workflow documents for static publishing work.
 
-```bash
-npx parcel build index.html --dist-dir dist --public-url ./
-```
-
-The generated files are written to:
-
-```text
-mobile-wedding-unrolling-invitation/dist/
-```
-
-## Customize Your Invitation
-
-Most people only need to edit these files:
-
-| File or folder | What to change |
+| Path | Purpose |
 | --- | --- |
-| `mobile-wedding-unrolling-invitation/index.html` | Names, invitation copy, date, venue, map link, alt text |
-| `mobile-wedding-unrolling-invitation/img/` | Replace sample images with your own wedding photos or sketches |
-| `mobile-wedding-unrolling-invitation/css/base.css` | Colors, type scale, spacing, section placement |
+| `AGENTS.md` | Codex-compatible project instructions |
+| `DESIGN.md` | Shared design system and visual rules |
+| `docs/ai-design-lab/` | LLMOps-based static design methodology |
+| `docs/templates/` | Design brief, layout spec, session log templates |
+| `docs/rubrics/` | Static HTML/CSS design review rubrics |
+| `ai/prompts/` | Reusable design prompts |
+| `design-system/` | Token starter documents |
 
-Keep these hooks unless you also update the JavaScript:
+## License
 
-```text
-#container
-main > .stage > [data-scroll]
-.js-image
-body.loading
-body.loaded
-```
-
-The `.js-image` class marks images that become WebGL unrolling meshes. If you remove it, that image will render as a normal DOM image and will not use the scroll transaction.
-
-For step-by-step editing, read:
-
-```text
-docs/mobile-wedding-template/customization.md
-```
-
-## Recommended Image Slots
-
-| Slot | File | Suggested image |
-| --- | --- | --- |
-| Cover background | `img/intro1.jpg` | Quiet wide or vertical opening image |
-| Cover unroll | `img/intro2.jpg` | Main couple portrait |
-| Detail foreground | `img/dos1.jpg` | Bouquet, rings, venue detail |
-| Invitation chapter | `img/dos2.jpg` | Walking or together image |
-| Ceremony chapter | `img/tres1.jpg` | Couple close portrait |
-| Venue image | `img/tres2.jpg` | Venue or ceremony mood image |
-| Memory grid | `img/1.jpg` to `img/4.jpg` | Four supporting memories |
-| Closing image | `img/last.jpg` | Final portrait or closing scene |
-
-Use compressed JPG or WebP-like source exports when possible. Very large images can make mobile WebGL startup slow.
-
-## Deploy
-
-Cloudflare Pages settings:
-
-| Setting | Value |
-| --- | --- |
-| Root directory | `mobile-wedding-unrolling-invitation` |
-| Build command | `npx parcel build index.html --dist-dir dist --public-url ./` |
-| Output directory | `dist` |
-
-More deployment details:
-
-```text
-docs/mobile-wedding-template/deployment.md
-```
-
-## Browser Support
-
-The template is intended for current mobile browsers with WebGL:
-
-- iPhone Safari
-- Android Chrome
-- desktop Chrome/Safari/Edge for previewing
-
-The live build has been checked on iPhone/WebKit profiles and Android Chrome profiles. Before sharing your own customized invitation, run the QA checklist:
-
-```text
-docs/mobile-wedding-template/qa-checklist.md
-```
-
-## Credit
-
-This template adapts the interaction mechanics from:
-
-- [akella/UnrollingImages](https://github.com/akella/UnrollingImages)
-- [Codrops Unrolling Images article](https://tympanus.net/codrops/?p=46712)
-- [Original demo](https://tympanus.net/Development/UnrollingImages/)
-
-Please keep the original credit when you reuse the interaction.
-
-License and reuse notes:
+This repository is primarily a course and portfolio workspace. Some subprojects use third-party demo mechanics or libraries and carry their own credit/license notes. For the mobile wedding invitation, see:
 
 ```text
 docs/mobile-wedding-template/credits-license.md
 ```
 
-## Star
+---
 
-If this helped you make an invitation, please just press Star(즐겨찾기) on the GitHub repository.
-
-No sponsorship, no sign-up, no mailing list. Star is enough.
-
-```text
-https://github.com/umyunsang/DigitalPublishing
-```
-
-## Course Archive
-
-This repository also contains older Digital Publishing class exercises and AI design-lab documents. The reusable wedding invitation template is the `mobile-wedding-unrolling-invitation/` folder.
+<p align="center">
+  <sub>동아대학교 x 동서대학교 글로컬연합대학 | 2026학년도 1학기</sub>
+</p>
