@@ -3,6 +3,14 @@ import fragment from "./shader/fragment.glsl";
 import vertex from "./shader/vertex.glsl";
 import * as dat from "dat.gui";
 
+const getViewportSize = () => {
+  const viewport = window.visualViewport;
+  return {
+    width: viewport && viewport.width ? viewport.width : window.innerWidth,
+    height: viewport && viewport.height ? viewport.height : window.innerHeight
+  };
+};
+
 export default class Sketch {
   constructor(selector) {
     this.scene = new THREE.Scene();
@@ -11,8 +19,9 @@ export default class Sketch {
       antialias: true,
       alpha: true
     });
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
+    const viewportSize = getViewportSize();
+    this.width = viewportSize.width;
+    this.height = viewportSize.height;
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(this.width, this.height);
     this.renderer.sortObjects = false;
@@ -24,7 +33,7 @@ export default class Sketch {
 
     this.camera = new THREE.PerspectiveCamera(
       70,
-      window.innerWidth / window.innerHeight,
+      this.width / this.height,
       300,
       1000
     );
@@ -58,11 +67,15 @@ export default class Sketch {
 
   setupResize() {
     window.addEventListener("resize", this.resize.bind(this));
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", this.resize.bind(this));
+    }
   }
 
   resize() {
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
+    const viewportSize = getViewportSize();
+    this.width = viewportSize.width;
+    this.height = viewportSize.height;
     this.renderer.setSize(this.width, this.height);
     this.camera.aspect = this.width / this.height;
 

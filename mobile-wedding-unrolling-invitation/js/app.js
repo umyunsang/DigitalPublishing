@@ -5,7 +5,7 @@ const scene = new Scene("container");
 const STAGE_WIDTH = 900;
 const STAGE_HEIGHT = 1440;
 const UNROLL_START_VIEWPORT = 0.95;
-const UNROLL_END_VIEWPORT = 0.35;
+const UNROLL_END_VIEWPORT = 0.05;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
   .matches;
 
