@@ -110,7 +110,7 @@ All spacing derives from a base of `4px`.
 - **Spacing**: `--space-10` through `--space-24`.
 - **States**: WebGL unroll on viewport entry with one fixed angled variation.
 - **Accessibility**: all DOM images need meaningful `alt` text because they are the fallback.
-- **Motion**: transform-based WebGL unroll; reduced motion disables smooth scroll and restores visible DOM images.
+- **Motion**: transform-based WebGL unroll; the user-controlled scroll transaction remains active across normal and reduced-motion settings, while nonessential automatic loader animation is reduced.
 
 ## 6. Motion & Interaction
 
@@ -129,7 +129,7 @@ All spacing derives from a base of `4px`.
 - Avoid layout animation.
 - WebGL image unroll progress must be deterministic from scroll/view position, so the same scroll offset always produces the same fold state in both directions.
 - IntersectionObserver may gate visibility and rendering, but it must not own roll/unroll state.
-- Respect `prefers-reduced-motion` by removing smooth-scroll transforms, hiding the WebGL canvas, and showing fallback images.
+- Respect `prefers-reduced-motion` by reducing nonessential automatic animation, not by disabling the core user-controlled scroll reveal.
 - Interactive controls must have hover, active, and focus-visible states.
 
 ## 7. Depth & Surface

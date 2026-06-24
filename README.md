@@ -1,118 +1,165 @@
-# Digital Publishing
+# Mobile Wedding Unrolling Invitation Template
 
-> 동아대-동서대 글로컬연합대학 Field 연합전공 | 디지털퍼블리싱 수업 실습 저장소
+Scroll-driven mobile wedding invitation template built with Three.js, WebGL, and a soft image-unrolling interaction.
 
-<br>
+도움이 됐다면 GitHub에서 Star(즐겨찾기)만 눌러주세요. 그걸로 충분합니다.
 
-## About
+## Links
 
-**동아대학교-동서대학교 글로컬연합대학**은 교육부 글로컬대학30 사업에 선정된 연합 모델로,  
-두 대학 간 Field 연합전공을 통해 현장 실무 중심의 교육을 제공합니다.
+| Type | Link |
+| --- | --- |
+| Live demo | [ourseason.pages.dev](https://ourseason.pages.dev/) |
+| GitHub repository | [github.com/umyunsang/DigitalPublishing](https://github.com/umyunsang/DigitalPublishing) |
+| Template folder | [`mobile-wedding-unrolling-invitation/`](mobile-wedding-unrolling-invitation/) |
+| Customization guide | [`docs/mobile-wedding-template/customization.md`](docs/mobile-wedding-template/customization.md) |
+| Deployment guide | [`docs/mobile-wedding-template/deployment.md`](docs/mobile-wedding-template/deployment.md) |
+| QA checklist | [`docs/mobile-wedding-template/qa-checklist.md`](docs/mobile-wedding-template/qa-checklist.md) |
 
-본 저장소는 **동서대학교 디지털미디어학부**에서 개설한 **디지털퍼블리싱** 수업의 실습 결과물을 담고 있습니다.
+## What This Is
 
-|  |  |
-|---|---|
-| **수강생** | 동아대학교 컴퓨터공학과 AI전공 |
-| **개설학과** | 동서대학교 디지털미디어학부 |
-| **연합전공** | 글로컬연합대학 Field 연합전공 (문화콘텐츠 분야) |
-| **수업명** | 디지털퍼블리싱 |
+This repository contains a reusable mobile wedding invitation template:
 
-<br>
+- scroll-linked WebGL image unroll transition
+- Korean invitation copy layout
+- mobile-first fixed stage composition
+- replaceable couple photos and wedding details
+- static hosting friendly build output
+- no React, no backend, no account system
 
-## Live Deployment
+The invitation lives in:
 
-- [World Design Capital Busan 2028 Prototype](https://wdc-busan.pages.dev/)
-
-<br>
-
-## Tech Stack
-
-<p>
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white"/>
-</p>
-
-<br>
-
-## Contents
-
-| 파일 | 설명 | 주요 학습 내용 |
-|------|------|--------------|
-| `index.html` | 담소 한식 카페 메뉴판 | HTML 시맨틱 구조, CSS 텍스트 스타일링, 이미지 배치 |
-| `figma.html` | Figma 디자인 → 코드 변환 | Figma export, absolute 포지셔닝, 뉴스 레이아웃 |
-| `news.html` | 뉴스 기사 카드 레이아웃 | Flexbox, RGBA 색상, box-shadow, border-radius |
-| `radious.html` | border-radius 연습 | 다양한 border-radius 값 조합, 도형 만들기 |
-| `float_layout.html` | Float 레이아웃 | float, clear 속성 이해 |
-| `layout_1200.html` | 1200px 고정폭 레이아웃 | 고정폭 페이지 설계, background-image 활용 |
-| `div_layout.html` | div 레이아웃 구성방법 4가지 | float, flex+overflow, flex:1, inline-block |
-| `govon.html` | GovOn 프로젝트 소개 페이지 | 3-카드 레이아웃, 외부 CSS 분리, 웹폰트 |
-
-<br>
-
-## Structure
-
-```
-DigitalPublishing/
-├── index.html              # 메인: 한식 카페 메뉴판
-├── figma.html              # Figma → 코드 변환
-├── news.html               # 뉴스 카드 레이아웃
-├── radious.html            # border-radius 연습
-├── float_layout.html       # Float 레이아웃
-├── layout_1200.html        # 1200px 고정폭 레이아웃
-├── div_layout.html         # div 레이아웃 4가지 방식
-├── govon.html              # GovOn 프로젝트 소개
-├── css/
-│   ├── style.css           # 메뉴판 스타일
-│   ├── news.css            # 뉴스 카드 스타일
-│   ├── radious.css         # border-radius 스타일
-│   └── govon.css           # GovOn 페이지 스타일
-└── images/
-    ├── *.jpg               # 한식 메뉴 이미지
-    ├── bts/                # BTS 레이아웃 이미지
-    └── govon/              # GovOn 프로젝트 이미지
+```text
+mobile-wedding-unrolling-invitation/
 ```
 
-<br>
+The current public demo is deployed at:
 
-## How to Run
+```text
+https://ourseason.pages.dev/
+```
 
-빌드 도구 없이 HTML 파일을 브라우저에서 직접 열어 확인할 수 있습니다.
+## Quick Start
 
 ```bash
-# macOS
-open index.html
-
-# 또는 Live Server (VS Code) 사용
+git clone https://github.com/umyunsang/DigitalPublishing.git
+cd DigitalPublishing/mobile-wedding-unrolling-invitation
+npm install
+npx parcel index.html
 ```
 
-<br>
+Then open the local Parcel URL in a browser.
 
-## AI Design Ops Setup
+For a production build:
 
-이 저장소에는 정적 디자인/레이아웃 수업에 맞춘 Codex 작업 환경이 추가되어 있습니다.
+```bash
+npx parcel build index.html --dist-dir dist --public-url ./
+```
 
-| 경로 | 용도 |
-|------|------|
-| `AGENTS.md` | Codex와 호환 에이전트가 읽는 프로젝트 작업 지침 |
-| `.agents/skills/` | 수업 전용 Codex 스킬: 디자인 브리프, PNG 설계도→HTML, 정적 리뷰, Figma 워크플로 |
-| `docs/ai-design-lab/` | LLMOps 기반 정적 디자인 방법론 |
-| `docs/templates/` | 디자인 브리프, 레이아웃 설계, 리뷰, AI 세션 로그 템플릿 |
-| `docs/rubrics/` | 정적 HTML/CSS 디자인 평가 루브릭 |
-| `ai/prompts/` | 반복 사용할 프롬프트 |
-| `design-system/` | 디자인 토큰 스타터 |
+The generated files are written to:
 
-자세한 사용법은 [`docs/ai-design-lab/README.md`](docs/ai-design-lab/README.md)를 참고하세요.
+```text
+mobile-wedding-unrolling-invitation/dist/
+```
 
-<br>
+## Customize Your Invitation
 
-## License
+Most people only need to edit these files:
 
-이 저장소는 수업 실습 목적으로 제작되었습니다.
+| File or folder | What to change |
+| --- | --- |
+| `mobile-wedding-unrolling-invitation/index.html` | Names, invitation copy, date, venue, map link, alt text |
+| `mobile-wedding-unrolling-invitation/img/` | Replace sample images with your own wedding photos or sketches |
+| `mobile-wedding-unrolling-invitation/css/base.css` | Colors, type scale, spacing, section placement |
 
----
+Keep these hooks unless you also update the JavaScript:
 
-<p align="center">
-  <sub>동아대학교 x 동서대학교 글로컬연합대학 | 2026학년도 1학기</sub>
-</p>
+```text
+#container
+main > .stage > [data-scroll]
+.js-image
+body.loading
+body.loaded
+```
+
+The `.js-image` class marks images that become WebGL unrolling meshes. If you remove it, that image will render as a normal DOM image and will not use the scroll transaction.
+
+For step-by-step editing, read:
+
+```text
+docs/mobile-wedding-template/customization.md
+```
+
+## Recommended Image Slots
+
+| Slot | File | Suggested image |
+| --- | --- | --- |
+| Cover background | `img/intro1.jpg` | Quiet wide or vertical opening image |
+| Cover unroll | `img/intro2.jpg` | Main couple portrait |
+| Detail foreground | `img/dos1.jpg` | Bouquet, rings, venue detail |
+| Invitation chapter | `img/dos2.jpg` | Walking or together image |
+| Ceremony chapter | `img/tres1.jpg` | Couple close portrait |
+| Venue image | `img/tres2.jpg` | Venue or ceremony mood image |
+| Memory grid | `img/1.jpg` to `img/4.jpg` | Four supporting memories |
+| Closing image | `img/last.jpg` | Final portrait or closing scene |
+
+Use compressed JPG or WebP-like source exports when possible. Very large images can make mobile WebGL startup slow.
+
+## Deploy
+
+Cloudflare Pages settings:
+
+| Setting | Value |
+| --- | --- |
+| Root directory | `mobile-wedding-unrolling-invitation` |
+| Build command | `npx parcel build index.html --dist-dir dist --public-url ./` |
+| Output directory | `dist` |
+
+More deployment details:
+
+```text
+docs/mobile-wedding-template/deployment.md
+```
+
+## Browser Support
+
+The template is intended for current mobile browsers with WebGL:
+
+- iPhone Safari
+- Android Chrome
+- desktop Chrome/Safari/Edge for previewing
+
+The live build has been checked on iPhone/WebKit profiles and Android Chrome profiles. Before sharing your own customized invitation, run the QA checklist:
+
+```text
+docs/mobile-wedding-template/qa-checklist.md
+```
+
+## Credit
+
+This template adapts the interaction mechanics from:
+
+- [akella/UnrollingImages](https://github.com/akella/UnrollingImages)
+- [Codrops Unrolling Images article](https://tympanus.net/codrops/?p=46712)
+- [Original demo](https://tympanus.net/Development/UnrollingImages/)
+
+Please keep the original credit when you reuse the interaction.
+
+License and reuse notes:
+
+```text
+docs/mobile-wedding-template/credits-license.md
+```
+
+## Star
+
+If this helped you make an invitation, please just press Star(즐겨찾기) on the GitHub repository.
+
+No sponsorship, no sign-up, no mailing list. Star is enough.
+
+```text
+https://github.com/umyunsang/DigitalPublishing
+```
+
+## Course Archive
+
+This repository also contains older Digital Publishing class exercises and AI design-lab documents. The reusable wedding invitation template is the `mobile-wedding-unrolling-invitation/` folder.

@@ -58,4 +58,4 @@ Run through Parcel, then inspect in a real browser:
 npx parcel index.html
 ```
 
-Check loader removal, scroll animation in both directions, reduced-motion fallback, mobile width, and console errors. Do not call this verified from static file opening.
+Check loader removal, scroll animation in both directions, reduced-motion behavior, mobile width, and console errors. Do not call this verified from static file opening.
