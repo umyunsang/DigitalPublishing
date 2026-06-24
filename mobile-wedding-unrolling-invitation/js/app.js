@@ -6,8 +6,6 @@ const STAGE_WIDTH = 900;
 const STAGE_HEIGHT = 1440;
 const UNROLL_START_VIEWPORT = 0.95;
 const UNROLL_END_VIEWPORT = 0.05;
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
-  .matches;
 
 // helper functions
 const MathUtils = {
@@ -308,7 +306,5 @@ Promise.all(preloadEverything).then(() => {
   // Get the scroll position
   getPageYScroll();
   // Initialize the Smooth Scrolling
-  if (!prefersReducedMotion) {
-    new SmoothScroll();
-  }
+  new SmoothScroll();
 });

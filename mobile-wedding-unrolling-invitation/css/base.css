@@ -173,30 +173,8 @@ canvas {
 }
 
 @media (prefers-reduced-motion: reduce) {
-	body {
-		height: auto !important;
-	}
-
-	canvas {
-		display: none !important;
-	}
-
-	main {
-		height: auto !important;
-		overflow: visible !important;
-		position: static !important;
-		width: auto !important;
-	}
-
-	.stage {
-		position: relative;
-	}
-
-	.stage [data-scroll] {
-		transform: none !important;
-	}
-
-	.loaded .js-image {
+	.js .loading::after {
+		animation: none;
 		opacity: 1;
 	}
 }
