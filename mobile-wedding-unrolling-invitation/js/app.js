@@ -1,17 +1,20 @@
 import imagesLoaded from "./imagesLoaded";
 import Scene from "./rolls";
-import gsap from "gsap";
 
 const scene = new Scene("container");
 const STAGE_WIDTH = 900;
 const STAGE_HEIGHT = 1440;
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+  .matches;
 
 // helper functions
 const MathUtils = {
   // map number x from range [a, b] to [c, d]
   map: (x, a, b, c, d) => ((x - a) * (d - c)) / (b - a) + c,
   // linear interpolation
-  lerp: (a, b, n) => (1 - n) * a + n * b
+  lerp: (a, b, n) => (1 - n) * a + n * b,
+  clamp: (x, min, max) => Math.min(Math.max(x, min), max),
+  smoothstep: x => x * x * (3 - 2 * x)
 };
 
 const body = document.body;
@@ -47,11 +50,7 @@ class Item {
     this.scroll = scroll;
     this.DOM = { el: el.img };
     this.currentScroll = docScroll;
-    this.animated = false;
-    this.isBeingAnimatedNow = false;
-    this.shouldRollBack = false;
-    this.shouldUnRoll = false;
-    this.positions = [];
+    this.isVisible = false;
 
     // set the initial values
     this.getSize();
@@ -63,46 +62,25 @@ class Item {
       iWidth: this.DOM.el.width,
       iHeight: this.DOM.el.height
     });
+    this.mesh.visible = false;
     scene.scene.add(this.mesh);
-    // use the IntersectionObserver API to check when the element is inside the viewport
-    // only then the element translation will be updated
-    this.intersectionRatio;
     let options = {
       root: null,
       rootMargin: "0px",
-      threshold: [0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+      threshold: [0]
     };
     this.observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        this.positions.push(entry.boundingClientRect.y);
-        let compareArray = this.positions.slice(
-          this.positions.length - 2,
-          this.positions.length
-        );
-        let down = compareArray[0] > compareArray[1] ? true : false;
-
         this.isVisible = entry.intersectionRatio > 0.0;
-
-        this.shouldRollBack = false;
-        this.shouldUnRoll = false;
-        if (
-          entry.intersectionRatio < 0.5 &&
-          entry.boundingClientRect.y > 0 &&
-          this.isVisible &&
-          !down
-        ) {
-          this.shouldRollBack = true;
-        }
-
-        if (
-          entry.intersectionRatio > 0.5 &&
-          entry.boundingClientRect.y > 0 &&
-          this.isVisible
-        ) {
-          this.shouldUnRoll = true;
-        }
-
         this.mesh.visible = this.isVisible;
+        if (this.isVisible) {
+          const scrollState = this.scroll.renderedStyles;
+          const scrollY = scrollState
+            ? scrollState.translationY.previous
+            : this.currentScroll;
+          this.render(scrollY);
+        }
+        this.scroll.shouldRender = true;
       });
     }, options);
     this.observer.observe(this.DOM.el);
@@ -138,39 +116,12 @@ class Item {
     this.mesh.position.y =
       currentScroll + winsize.height / 2 - this.insideRealTop - this.height / 2;
     this.mesh.position.x = 0 - winsize.width / 2 + this.left + this.width / 2;
-    if (this.shouldUnRoll && !this.animated) {
-      this.animated = true;
-      this.isBeingAnimatedNow = true;
-      this.shouldUnRoll = false;
-      gsap.to(this.mesh.material.uniforms.progress, {
-        duration: 1.7,
-        value: 1,
-        ease: "power2.out",
-        onUpdate: () => {
-          this.scroll.shouldRender = true;
-        },
-        onComplete: () => {
-          this.isBeingAnimatedNow = false;
-        }
-      });
-    }
+    const start = this.insideRealTop - winsize.height * 0.85;
+    const end = this.insideRealTop + this.height * 0.35;
+    const rawProgress = MathUtils.map(currentScroll, start, end, 0, 1);
+    const progress = MathUtils.smoothstep(MathUtils.clamp(rawProgress, 0, 1));
 
-    if (this.shouldRollBack && this.animated) {
-      this.animated = false;
-      this.isBeingAnimatedNow = true;
-      this.shouldRollBack = false;
-      gsap.to(this.mesh.material.uniforms.progress, {
-        duration: 1.7,
-        value: 0,
-        ease: "power2.inOut",
-        onUpdate: () => {
-          this.scroll.shouldRender = true;
-        },
-        onComplete: () => {
-          this.isBeingAnimatedNow = false;
-        }
-      });
-    }
+    this.mesh.material.uniforms.progress.value = progress;
   }
 }
 
@@ -242,7 +193,7 @@ class SmoothScroll {
       for (const item of this.items) {
         // if the item is inside the viewport call it's render function
         // this will update the item's inner image translation, based on the document scroll value and the item's position on the viewport
-        if (item.isVisible || item.isBeingAnimatedNow) {
+        if (item.isVisible) {
           item.render(this.renderedStyles.translationY.previous);
         }
       }
@@ -322,5 +273,7 @@ Promise.all(preloadEverything).then(() => {
   // Get the scroll position
   getPageYScroll();
   // Initialize the Smooth Scrolling
-  new SmoothScroll();
+  if (!prefersReducedMotion) {
+    new SmoothScroll();
+  }
 });

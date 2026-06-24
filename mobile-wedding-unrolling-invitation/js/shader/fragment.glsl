@@ -17,6 +17,6 @@ void main()	{
 
 	gl_FragColor = texture2D(texture1,newUV);
     gl_FragColor.rgb *=vFrontShadow;
-    gl_FragColor.a = clamp(progress*5.,0.,1.);
+    gl_FragColor.a = smoothstep(0.,0.35,progress);
 
 }

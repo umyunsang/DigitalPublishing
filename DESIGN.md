@@ -120,14 +120,16 @@ All spacing derives from a base of `4px`.
 |------|----------|--------|-------|
 | Micro | `120ms` | `ease-out` | Link and button feedback |
 | Standard | `240ms` | `ease-in-out` | Button state transitions |
-| Emphasis | `1700ms` | `power2.out` | WebGL image unroll |
+| Image reveal | tied to scroll | smoothstep shader ramp | WebGL image unroll |
 | Scroll-driven | tied to scroll | linear interpolation | Smooth scroll and image positioning |
 
 ### Rules
 
 - Animate `transform`, `opacity`, and shader uniforms only.
 - Avoid layout animation.
-- Respect `prefers-reduced-motion` by removing smooth-scroll transforms and showing fallback images.
+- WebGL image unroll progress must be deterministic from scroll/view position, so the same scroll offset always produces the same fold state in both directions.
+- IntersectionObserver may gate visibility and rendering, but it must not own roll/unroll state.
+- Respect `prefers-reduced-motion` by removing smooth-scroll transforms, hiding the WebGL canvas, and showing fallback images.
 - Interactive controls must have hover, active, and focus-visible states.
 
 ## 7. Depth & Surface

@@ -172,6 +172,35 @@ canvas {
 	pointer-events: none;
 }
 
+@media (prefers-reduced-motion: reduce) {
+	body {
+		height: auto !important;
+	}
+
+	canvas {
+		display: none !important;
+	}
+
+	main {
+		height: auto !important;
+		overflow: visible !important;
+		position: static !important;
+		width: auto !important;
+	}
+
+	.stage {
+		position: relative;
+	}
+
+	.stage [data-scroll] {
+		transform: none !important;
+	}
+
+	.loaded .js-image {
+		opacity: 1;
+	}
+}
+
 .stage {
 	left: 50%;
 	min-height: var(--stage-height);

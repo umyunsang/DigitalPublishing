@@ -49,10 +49,10 @@ void main() {
   newposition = rotate(newposition - vec3(-.5,.5,0.), vec3(0.,0.,1.),-finalAngle) + vec3(-.5,.5,0.);
 
   float offs = (newposition.x + 0.5)/(sin(finalAngle) + cos(finalAngle)) ; // -0.5..0.5 -> 0..1
-  float tProgress = clamp( (progress - offs*0.99)/0.01 , 0.,1.);
+  float tProgress = smoothstep(0., 0.06, progress - offs*0.99);
 
   // shadows
-  vFrontShadow = clamp((progress - offs*0.95)/0.05,0.7,1.);
+  vFrontShadow = mix(0.72, 1., smoothstep(0., 0.12, progress - offs*0.95));
   // vBackShadow = 1. - clamp(abs((progress - offs*0.9)/0.1),0.,1.);
   // vProgress = clamp((progress - offs*0.95)/0.05,0.,1.);
 
@@ -74,5 +74,4 @@ void main() {
   vec3 finalposition = mix(newposition,position,tProgress);
   gl_Position = projectionMatrix * modelViewMatrix * vec4(finalposition, 1.0 );
 }
-
 
