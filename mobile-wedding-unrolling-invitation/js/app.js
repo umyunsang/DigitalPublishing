@@ -4,6 +4,8 @@ import Scene from "./rolls";
 const scene = new Scene("container");
 const STAGE_WIDTH = 900;
 const STAGE_HEIGHT = 1440;
+const UNROLL_START_VIEWPORT = 0.95;
+const UNROLL_END_VIEWPORT = 0.35;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
   .matches;
 
@@ -22,8 +24,15 @@ const body = document.body;
 // calculate the viewport size
 let winsize;
 let stageScale = 1;
+const getViewportSize = () => {
+  const viewport = window.visualViewport;
+  return {
+    width: viewport && viewport.width ? viewport.width : window.innerWidth,
+    height: viewport && viewport.height ? viewport.height : window.innerHeight
+  };
+};
 const calcWinsize = () => {
-  winsize = { width: window.innerWidth, height: window.innerHeight };
+  winsize = getViewportSize();
   stageScale = Math.min(winsize.width / STAGE_WIDTH, winsize.height / STAGE_HEIGHT);
   document.documentElement.style.setProperty("--stage-scale", stageScale);
   return winsize;
@@ -31,7 +40,21 @@ const calcWinsize = () => {
 let IMAGES;
 calcWinsize();
 // and recalculate on resize
-window.addEventListener("resize", calcWinsize);
+let resizeRaf = null;
+const requestResize = () => {
+  if (resizeRaf !== null) {
+    cancelAnimationFrame(resizeRaf);
+  }
+  resizeRaf = requestAnimationFrame(() => {
+    resizeRaf = null;
+    calcWinsize();
+    window.dispatchEvent(new CustomEvent("unroll:resize"));
+  });
+};
+window.addEventListener("resize", requestResize);
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", requestResize);
+}
 
 window.onbeforeunload = function() {
   window.scrollTo(0, 0);
@@ -67,26 +90,20 @@ class Item {
     let options = {
       root: null,
       rootMargin: "0px",
-      threshold: [0]
+      threshold: [0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
     };
     this.observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         this.isVisible = entry.intersectionRatio > 0.0;
         this.mesh.visible = this.isVisible;
         if (this.isVisible) {
-          const scrollState = this.scroll.renderedStyles;
-          const scrollY = scrollState
-            ? scrollState.translationY.previous
-            : this.currentScroll;
-          this.render(scrollY);
+          this.render();
         }
         this.scroll.shouldRender = true;
       });
     }, options);
     this.observer.observe(this.DOM.el);
-    // init/bind events
-    window.addEventListener("resize", () => this.resize());
-    this.render(0);
+    this.render();
   }
 
   getSize() {
@@ -107,18 +124,27 @@ class Item {
     // on resize rest sizes and update the translation value
     this.getSize();
     this.mesh.scale.set(this.width, this.height, 200);
-    this.render(this.scroll.renderedStyles.translationY.current);
+    this.render();
     this.scroll.shouldRender = true;
   }
 
-  render(currentScroll) {
-    this.currentScroll = currentScroll;
+  render() {
+    this.currentScroll = docScroll;
+    const bounds = this.DOM.el.getBoundingClientRect();
+    this.width = bounds.width;
+    this.height = bounds.height;
+    this.left = bounds.left;
     this.mesh.position.y =
-      currentScroll + winsize.height / 2 - this.insideRealTop - this.height / 2;
-    this.mesh.position.x = 0 - winsize.width / 2 + this.left + this.width / 2;
-    const start = this.insideRealTop - winsize.height * 0.85;
-    const end = this.insideRealTop + this.height * 0.35;
-    const rawProgress = MathUtils.map(currentScroll, start, end, 0, 1);
+      winsize.height / 2 - bounds.top - bounds.height / 2;
+    this.mesh.position.x = 0 - winsize.width / 2 + bounds.left + bounds.width / 2;
+    this.mesh.scale.set(bounds.width, bounds.height, bounds.width / 2);
+    const rawProgress = MathUtils.map(
+      bounds.top,
+      winsize.height * UNROLL_START_VIEWPORT,
+      winsize.height * UNROLL_END_VIEWPORT,
+      0,
+      1
+    );
     const progress = MathUtils.smoothstep(MathUtils.clamp(rawProgress, 0, 1));
 
     this.mesh.material.uniforms.progress.value = progress;
@@ -138,6 +164,7 @@ class SmoothScroll {
     this.items = [];
 
     this.createItems();
+    this.handleResize = () => this.resize();
 
     // here we define which property will change as we scroll the page
     // in this case we will be translating on the y-axis
@@ -165,6 +192,8 @@ class SmoothScroll {
     this.initEvents();
     // start the render loop
     requestAnimationFrame(() => this.render());
+    requestAnimationFrame(this.handleResize);
+    setTimeout(this.handleResize, 250);
   }
 
   update() {
@@ -194,7 +223,7 @@ class SmoothScroll {
         // if the item is inside the viewport call it's render function
         // this will update the item's inner image translation, based on the document scroll value and the item's position on the viewport
         if (item.isVisible) {
-          item.render(this.renderedStyles.translationY.previous);
+          item.render();
         }
       }
     }
@@ -231,7 +260,13 @@ class SmoothScroll {
   }
   initEvents() {
     // on resize reset the body's height
-    window.addEventListener("resize", () => this.setSize());
+    window.addEventListener("unroll:resize", this.handleResize);
+  }
+  resize() {
+    calcWinsize();
+    this.items.forEach(item => item.resize());
+    this.setSize();
+    this.update();
   }
   render() {
     // update the current and interpolated values
