@@ -1,85 +1,54 @@
 # Digital Publishing
 
-> 동아대-동서대 글로컬연합대학 Field 연합전공 | 디지털퍼블리싱 수업 및 퍼블리싱 프로젝트 저장소
+<p align="center">
+  <strong>Interactive Web Publishing Portfolio</strong><br>
+  HTML · CSS · JavaScript · Three.js · WebGL
+</p>
 
-## About
+정적 웹의 기본기부터 WebGL 기반 스크롤 인터랙션까지, 시각적 아이디어를 실제 웹 경험으로 구현한 디지털 퍼블리싱 포트폴리오입니다.
 
-이 저장소는 **동서대학교 디지털미디어학부 디지털퍼블리싱 수업**에서 진행한 정적 HTML/CSS 실습과 퍼블리싱 프로젝트를 모아 둔 작업 공간입니다.
+동아대학교 컴퓨터공학과 AI전공에서 공부하며 동서대학교 디지털미디어학부 디지털퍼블리싱 수업과 개인 프로젝트를 통해 타이포그래피, 반응형 레이아웃, 이미지 연출, 인터랙티브 스토리텔링을 확장하고 있습니다.
 
-| 항목 | 내용 |
+## Featured Projects
+
+| Project | Highlights | Links |
+| --- | --- | --- |
+| **Interactive Wedding Invitation** | Three.js와 WebGL로 구현한 스크롤 기반 이미지 전환, 화면 비율별 아트 디렉션, 한국어 중심의 모바일 타이포그래피 | [Live](https://20261012.pages.dev/) · [Source](mobile-wedding-unrolling-invitation/) |
+| **World Design Capital Busan 2028** | 부산의 도시 이미지를 에디토리얼 레이아웃과 인터랙션으로 풀어낸 웹 퍼블리싱 프로젝트 | [Live](https://wdc-busan.pages.dev/) · [Source](world-design-capital-busan/) |
+
+## What I Explore
+
+- 명확한 시각적 위계와 읽기 흐름을 만드는 HTML/CSS 구성
+- 모바일부터 와이드 화면까지 이어지는 반응형 이미지와 레이아웃
+- Three.js와 WebGL을 활용한 스크롤 기반 시각 경험
+- 한국어 타이포그래피와 사진을 결합한 에디토리얼 스토리텔링
+- 아이디어를 공개 URL로 완성하는 정적 웹 퍼블리싱
+
+## Selected Exercises
+
+| File or folder | Focus |
 | --- | --- |
-| 수강생 | 동아대학교 컴퓨터공학과 AI전공 |
-| 개설학과 | 동서대학교 디지털미디어학부 |
-| 연합전공 | 글로컬연합대학 Field 연합전공 |
-| 수업명 | 디지털퍼블리싱 |
+| [`index.html`](index.html) | 한식 카페 메뉴판과 시맨틱 콘텐츠 구성 |
+| [`figma.html`](figma.html) | Figma 기반 뉴스 레이아웃 구현 |
+| [`news.html`](news.html) | 카드형 기사 레이아웃과 시각적 그룹화 |
+| [`float_layout.html`](float_layout.html) | Float 기반 레이아웃과 흐름 제어 |
+| [`layout_1200.html`](layout_1200.html) | 고정폭 데스크톱 레이아웃 |
+| [`govon.html`](govon.html) | 공공서비스 콘셉트 소개 페이지 |
+| [`9주차-*`](.) | 메뉴, 토글, 팝업, FAQ UI 실습 |
 
-## Featured Publishing Projects
+## Tech
 
-| Project | Description | Link |
-| --- | --- | --- |
-| Mobile Wedding Unrolling Invitation | Three.js/WebGL 기반 스크롤 인터랙션 모바일 청첩장 하위 프로젝트 | [`mobile-wedding-unrolling-invitation/`](mobile-wedding-unrolling-invitation/) |
-| World Design Capital Busan 2028 Prototype | 부산 WDC 2028 콘셉트 퍼블리싱 프로토타입 | [wdc-busan.pages.dev](https://wdc-busan.pages.dev/) |
+`HTML5` · `CSS3` · `JavaScript` · `Three.js` · `WebGL` · `GLSL` · `Parcel` · `Figma` · `Cloudflare Pages`
 
-모바일 청첩장 템플릿을 사용하려면 아래 경로의 README를 먼저 보세요.
+## View Locally
 
-```text
-mobile-wedding-unrolling-invitation/README.md
-```
-
-직접 공유 가능한 모바일 청첩장 데모 링크:
-
-```text
-https://ourseason.pages.dev/
-```
-
-도움이 됐다면 GitHub에서 Star(즐겨찾기)만 눌러주세요.
-
-## Class Exercises
-
-| File or folder | Description | Main practice |
-| --- | --- | --- |
-| `index.html` | 담소 한식 카페 메뉴판 | HTML 시맨틱 구조, CSS 텍스트 스타일링, 이미지 배치 |
-| `figma.html` | Figma 디자인 기반 정적 페이지 | Figma export, absolute positioning, 뉴스 레이아웃 |
-| `news.html` | 뉴스 기사 카드 레이아웃 | Flexbox, RGBA, shadow, radius |
-| `radious.html` | border-radius 연습 | 다양한 border-radius 조합 |
-| `float_layout.html` | Float 레이아웃 | float, clear |
-| `layout_1200.html` | 1200px 고정폭 레이아웃 | fixed-width page layout |
-| `div_layout.html` | div 레이아웃 구성 방식 | float, flex, inline-block |
-| `govon.html` | GovOn 프로젝트 소개 페이지 | 카드 레이아웃, 외부 CSS, 웹폰트 |
-| `9주차-*` | 9주차 UI 실습 묶음 | position, menu, toggle, popup, FAQ |
-
-## Repository Structure
-
-```text
-DigitalPublishing/
-├── README.md
-├── index.html
-├── figma.html
-├── news.html
-├── radious.html
-├── float_layout.html
-├── layout_1200.html
-├── div_layout.html
-├── govon.html
-├── css/
-├── images/
-├── 9주차-*/
-├── kosmos-light/
-├── mobile-wedding-unrolling-invitation/
-├── docs/
-├── ai/
-└── design-system/
-```
-
-## How to Run
-
-Most class exercises are plain static HTML files and can be opened directly.
+대부분의 수업 예제는 HTML 파일을 브라우저에서 바로 열 수 있습니다.
 
 ```bash
 open index.html
 ```
 
-The mobile wedding invitation is different because it uses Parcel, ES modules, and GLSL shader imports. Run it from its folder:
+WebGL 청첩장 프로젝트는 Parcel을 사용합니다.
 
 ```bash
 cd mobile-wedding-unrolling-invitation
@@ -87,30 +56,12 @@ npm install
 npx parcel index.html
 ```
 
-## AI Design Ops Documents
+## Credits
 
-This repository also includes AI-assisted design workflow documents for static publishing work.
-
-| Path | Purpose |
-| --- | --- |
-| `AGENTS.md` | Codex-compatible project instructions |
-| `DESIGN.md` | Shared design system and visual rules |
-| `docs/ai-design-lab/` | LLMOps-based static design methodology |
-| `docs/templates/` | Design brief, layout spec, session log templates |
-| `docs/rubrics/` | Static HTML/CSS design review rubrics |
-| `ai/prompts/` | Reusable design prompts |
-| `design-system/` | Token starter documents |
-
-## License
-
-This repository is primarily a course and portfolio workspace. Some subprojects use third-party demo mechanics or libraries and carry their own credit/license notes. For the mobile wedding invitation, see:
-
-```text
-docs/mobile-wedding-template/credits-license.md
-```
+일부 프로젝트는 공개 라이브러리와 인터랙션 레퍼런스를 바탕으로 제작했으며, 해당 하위 프로젝트에 출처와 라이선스를 표기했습니다.
 
 ---
 
 <p align="center">
-  <sub>동아대학교 x 동서대학교 글로컬연합대학 | 2026학년도 1학기</sub>
+  <sub>Dong-A University × Dongseo University · Digital Publishing Portfolio</sub>
 </p>

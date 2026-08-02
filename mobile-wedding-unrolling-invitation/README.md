@@ -10,7 +10,7 @@ Three.js/WebGL 기반의 이미지 unroll 효과를 모바일 청첩장 흐름�
 
 | Type | Link |
 | --- | --- |
-| Live demo | [https://ourseason.pages.dev/](https://ourseason.pages.dev/) |
+| Live demo | [https://20261012.pages.dev/](https://20261012.pages.dev/) |
 | This folder on GitHub | [github.com/umyunsang/DigitalPublishing/tree/main/mobile-wedding-unrolling-invitation](https://github.com/umyunsang/DigitalPublishing/tree/main/mobile-wedding-unrolling-invitation) |
 | Parent repository | [github.com/umyunsang/DigitalPublishing](https://github.com/umyunsang/DigitalPublishing) |
 | Extra docs | [`../docs/mobile-wedding-template/`](../docs/mobile-wedding-template/) |
@@ -38,7 +38,7 @@ This is not a React or Next.js app. It is a Parcel-served static WebGL page.
 Current public demo:
 
 ```text
-https://ourseason.pages.dev/
+https://20261012.pages.dev/
 ```
 
 The demo content currently uses sample wedding details for `형인 & 예영`. Replace the text and images before using it as a real invitation.

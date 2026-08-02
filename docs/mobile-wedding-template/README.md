@@ -15,7 +15,7 @@
 
 ## Template Links
 
-- Live demo: [https://ourseason.pages.dev/](https://ourseason.pages.dev/)
+- Live demo: [https://20261012.pages.dev/](https://20261012.pages.dev/)
 - GitHub repository: [https://github.com/umyunsang/DigitalPublishing](https://github.com/umyunsang/DigitalPublishing)
 - Template folder: [`../../mobile-wedding-unrolling-invitation/`](../../mobile-wedding-unrolling-invitation/)
 
